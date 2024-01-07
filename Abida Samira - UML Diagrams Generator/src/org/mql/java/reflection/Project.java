@@ -1,22 +1,20 @@
 package org.mql.java.reflection;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-    private List<PackageInfo> packages;
+    private List<PackageExplorer> packageExplorers;
 
     public Project() {
-        this.packages = new ArrayList<>();
+        this.packageExplorers = new ArrayList<>();
     }
 
-    public List<PackageInfo> getPackages() {
-        return packages;
+    public void addPackageExplorer(PackageExplorer packageExplorer) {
+        packageExplorers.add(packageExplorer);
     }
 
-    public void setPackages(List<PackageInfo> packages) {
-        this.packages = packages;
+    public List<PackageExplorer> getPackageExplorers() {
+        return packageExplorers;
     }
 }
