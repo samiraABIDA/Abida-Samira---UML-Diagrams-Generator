@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-    private List<PackageExplorer> packageExplorers;
+    private List<ClassI> classes = new ArrayList<>();
 
-    public Project() {
-        this.packageExplorers = new ArrayList<>();
+    public void addClass(ClassI classInfo) {
+        classes.add(classInfo);
     }
 
-    public void addPackageExplorer(PackageExplorer packageExplorer) {
-        packageExplorers.add(packageExplorer);
-    }
-
-    public List<PackageExplorer> getPackageExplorers() {
-        return packageExplorers;
+    public List<ClassI> getClasses() {
+        return classes;
     }
 }
