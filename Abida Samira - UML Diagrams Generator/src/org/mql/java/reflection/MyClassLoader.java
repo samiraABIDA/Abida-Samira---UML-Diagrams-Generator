@@ -18,7 +18,7 @@ public class MyClassLoader  {
 				e.printStackTrace();
 			}
 	}
-	
+	//*********
 	public Class<?> getMaClass() {
 		return maClasse;
 	}
