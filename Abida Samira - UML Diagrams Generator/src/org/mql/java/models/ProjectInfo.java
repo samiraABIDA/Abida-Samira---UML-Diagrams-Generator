@@ -33,8 +33,8 @@ public class ProjectInfo {
         this.packages = packages;
     }
 
-    public void addPackage(PackageInfo pckg) {
-        this.packages.add(pckg);
+    public void addPackage(PackageInfo packageInfo) {
+        this.packages.add(packageInfo);
     }
 
     public List<ClassInfo> getAllClasses() {

@@ -18,6 +18,10 @@ public class ProjectExplorer {
     public void getPackage(File dir) {
         File[] files = dir.listFiles();
 
+        if (files == null) {
+            return; 
+        }
+
         for (File file : files) {
             if (file.isDirectory()) {
                 String packageName = file.getPath().replace(rootPath, "").replace("\\", ".");
@@ -26,6 +30,7 @@ public class ProjectExplorer {
             }
         }
     }
+
 
     public Set<String> getPackageNames() {
         return packageNames;

@@ -1,15 +1,17 @@
 package org.mql.java.models;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class PackageInfo {
-    
+
     private String packageName;
     private List<ClassInfo> classes;
+    private List<PackageInfo> subPackages; 
 
     public PackageInfo() {
-        this.classes = new Vector<ClassInfo>();
+        this.classes = new ArrayList<>();
+        this.subPackages = new ArrayList<>(); 
     }
 
     public PackageInfo(String packageName) {
@@ -29,11 +31,28 @@ public class PackageInfo {
         return classes;
     }
 
-    public void setClass(List<ClassInfo> classes) {
-        this.classes= classes;
+    public void setClasses(List<ClassInfo> classes) {
+        this.classes = classes;
     }
 
     public void addClass(ClassInfo classInfo) {
         this.classes.add(classInfo);
+    }
+
+    public List<PackageInfo> getSubPackages() {
+        return subPackages;
+    }
+
+    public void setSubPackages(List<PackageInfo> subPackages) {
+        this.subPackages = subPackages;
+    }
+
+    public void addSubPackage(PackageInfo subPackage) {
+        this.subPackages.add(subPackage);
+    }
+    
+    // Ajout de la méthode addPackage
+    public void addPackage(PackageInfo packageInfo) {
+        this.subPackages.add(packageInfo);
     }
 }

@@ -63,11 +63,10 @@ public class Method {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Methods [modifier=" + modifier + ", returnType=" + returnType + ", name=" + name + ", parameters="
-				+ parameters + "]";
+	    return "Method [modifier=" + modifier + ", returnType=" + returnType + ", name=" + name + ", parameters="
+	            + parameters + "]";
 	}
 
 	

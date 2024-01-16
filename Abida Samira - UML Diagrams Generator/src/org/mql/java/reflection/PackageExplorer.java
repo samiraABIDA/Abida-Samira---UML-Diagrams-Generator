@@ -2,102 +2,92 @@ package org.mql.java.reflection;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Vector;
 
+import org.mql.java.models.ClassInfo;
 import org.mql.java.models.PackageInfo;
 import org.mql.java.models.ProjectInfo;
-import org.mql.java.models.ClassInfo;
 
 public class PackageExplorer {
 
-    private ProjectInfo project;
+	private ProjectInfo project;
 
-    public PackageExplorer(String projectName) {
-        project = new ProjectInfo(projectName);
+	public PackageExplorer(String projectName) {
+		project = new ProjectInfo(projectName);
 
-        String classPath = System.getProperty("java.class.path");
-        String[] s = classPath.split(File.separator.equals("\\") ? "\\\\" : File.separator);
+		String binPath = "C:\\Users\\asus\\git\\repository7\\Abida Samira - UML Diagrams Generator\\bin";
+		File directory = new File(binPath);
 
-        String newClassPath = s[0];
+		getPackages(directory.listFiles());
+		addClassesToPackages();
+	}
 
-        for (int i = 1; i < s.length - 2; i++) {
-            newClassPath += File.separator + s[i];
-        }
+	private void getPackages(File[] files) {
+		if (files == null) {
+			return;
+		}
 
-        newClassPath += File.separator + projectName + File.separator + "bin";
-        File directory = new File(newClassPath);
+		for (File file : files) {
+			if (file.isDirectory()) {
+				String packageName = getPackageName(file);
+				PackageInfo packageInfo = new PackageInfo(packageName);
+				project.addPackage(packageInfo);
+				getClasses(file, packageInfo);
+				getPackages(file.listFiles());
+			}
+		}
+	}
 
-        getPackages(directory.listFiles());
-        addClassesToPackages();
-    }
+	private String getPackageName(File directory) {
+		String packagePath = directory.getAbsolutePath();
+		String basePath = new File("C:\\Users\\asus\\git\\repository7\\Abida Samira - UML Diagrams Generator\\bin").getAbsolutePath();
+		String packageName = packagePath.replace(basePath, "").replace(File.separator, ".");
+		return packageName.substring(1); 
+	}
 
-    private void getPackages(File[] files) {
-        for (File file : files) {
-            if (file.isDirectory()) {
-                int size = file.listFiles().length;
+	private void getClasses(File directory, PackageInfo packageInfo) {
+		File[] files = directory.listFiles();
+		for (File file : files) {
+			if (file.isFile() && file.getName().endsWith(".class")) {
 
-                if (size == 0 || file.listFiles()[0].getName().contains(".class") || file.listFiles()[size - 1].getName().contains(".class")) {
-                    PackageInfo packageInfo = new PackageInfo(file.getName());
-                    getClasses(file, packageInfo);
-                    project.addPackage(packageInfo);
-                }
+				String className = file.getName().replace(".class", "");
+				packageInfo.addClass(new ClassInfo(className));
+			}
+		}
+	}
 
-                getPackages(file.listFiles());
-            }
-        }
-    }
+	private void addClassesToPackages() {
+		List<PackageInfo> packages = project.getPackages();
 
-    private void getClasses(File directory, PackageInfo packageInfo) {
-        File[] files = directory.listFiles();
-        for (File file : files) {
-            if (file.isFile() && file.getName().endsWith(".class")) {
-                // Obtenez le nom de la classe à partir du nom du fichier
-                String className = file.getName().replace(".class", "");
-                packageInfo.addClass(new ClassInfo(className));
-            } else if (file.isDirectory()) {
-                getClasses(file, packageInfo);
-            }
-        }
-    }
+		for (PackageInfo packageInfo : packages) {
+			String packagePath = packageInfo.getPackageName().replace(".", File.separator);
+			Enumeration<URL> resources;
 
-    private void addClassesToPackages() {
-        List<PackageInfo> packages = project.getPackages();
+			try {
+				resources = this.getClass().getClassLoader().getResources(packagePath);
 
-        for (PackageInfo packageInfo : packages) {
-            String packagePath = packageInfo.getPackageName().replace(".", File.separator);
-            Enumeration<URL> resources;
-            try {
-                resources = this.getClass().getClassLoader().getResources(packagePath);
-                while (resources.hasMoreElements()) {
-                    URL url = resources.nextElement();
-                    String className = extractClassNameFromURL(url);
-                    loadAndAddClassToPackage(className, packageInfo);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+				for (URL url : Collections.list(resources)) {
+					String fileName = new File(url.toURI()).getName();
 
-    private String extractClassNameFromURL(URL url) {
-        String path = url.getPath();
-        String className = path.substring(path.lastIndexOf("/") + 1);  // À adapter en fonction de votre structure d'URL
-        return className.replace(".class", "");
-    }
+					if (fileName.endsWith(".class")) {
+						String className = fileName.replace(".class", "");
+						loadAndAddClassToPackage(className, packageInfo);
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
+	private void loadAndAddClassToPackage(String className, PackageInfo packageInfo) {
+		System.out.println("Loading class: " + className);
+		packageInfo.addClass(new ClassInfo(className));
+	}
 
-    private void loadAndAddClassToPackage(String className, PackageInfo packageInfo) {
-        try {
-            Class<?> loadedClass = Class.forName(className);
-            packageInfo.addClass(new ClassInfo(loadedClass.getSimpleName()));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public ProjectInfo getProject() {
-        return project;
-    }
+	public ProjectInfo getProject() {
+		return project;
+	}
 }
