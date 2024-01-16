@@ -20,11 +20,11 @@ public class ClassExplorer {
 
 	}
 
-	public ClassExplorer(ClassLoader classLoader, String className) {
-		this.classLoader = classLoader; 
+	public ClassExplorer(String binPath, String classNameQl) {
 		try {
 
-			Class<?> cls = classLoader.loadClass(className);
+			MyClassLoader classLoader=new MyClassLoader(binPath, classNameQl);
+			Class<?> cls = classLoader.getMaClass();
 
 			classInfo = new ClassInfo(cls.getSimpleName());
 			classInfo.setProperties(getProperties(cls));
@@ -115,11 +115,11 @@ public class ClassExplorer {
 		return Modifier.toString(m);
 	}
 
-	public ClassInfo getSkeleton() {
+	public ClassInfo getClassInfo() {
 		return classInfo;
 	}
 
-	public void setSkeleton(ClassInfo skeleton) {
+	public void setClassInfo(ClassInfo classInfo) {
 		this.classInfo = classInfo;
 	}
 }

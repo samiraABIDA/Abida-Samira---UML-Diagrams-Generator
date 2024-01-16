@@ -22,6 +22,9 @@ public class ClassInfo {
         this();
         this.className = className;
     }
+    public ClassInfo(Class cls) {
+    	
+    }
 
     public String getClassName() {
         return className;

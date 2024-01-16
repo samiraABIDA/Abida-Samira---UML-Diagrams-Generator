@@ -1,3 +1,4 @@
+
 package org.mql.java.reflection;
 
 import java.io.File;
@@ -14,66 +15,65 @@ public class PackageExplorer {
 
 	private ProjectInfo project;
 
-	public PackageExplorer(String projectName) {
-		project = new ProjectInfo(projectName);
-
-		String binPath = "C:\\Users\\asus\\git\\repository7\\Abida Samira - UML Diagrams Generator\\bin";
-		File directory = new File(binPath);
-
-		getPackages(directory.listFiles());
-		addClassesToPackages();
+	public PackageExplorer(String projectPath) {
+		project = new ProjectInfo(new File(projectPath).getName());
+		File directory = new File(projectPath, "bin"); // Assuming the binary folder is always named "bin"
+		project.setPath(directory.getPath());
+		System.out.println(directory.getPath());
+		explorePackages(directory, "");
+		// addClassesToPackages();
 	}
 
-	private void getPackages(File[] files) {
-		if (files == null) {
+	private void explorePackages(File directory, String pack) {
+		int d = 0;
+		if (directory == null || !directory.exists()) {
 			return;
 		}
 
-		for (File file : files) {
+		for (File file : directory.listFiles()) {
+
 			if (file.isDirectory()) {
-				String packageName = getPackageName(file);
-				PackageInfo packageInfo = new PackageInfo(packageName);
-				project.addPackage(packageInfo);
-				getClasses(file, packageInfo);
-				getPackages(file.listFiles());
+				String packageName = getRelativePackageName(file);
+
+				explorePackages(file, pack.isEmpty() ? file.getName() : pack + "." + file.getName());
+				// getClasses(file, packageInfo);
+			} else {
+				if (d == 0) {
+					d = 1;
+					PackageInfo packageInfo = new PackageInfo(pack);
+					packageInfo.addClass(new ClassExplorer(project.getPath(),pack+"."+file.getName().replace(".class", "")).getClassInfo());
+//					packageInfo.addClass(new ClassInfo(file.getName().replace(".class", "")));
+
+					project.addPackage(packageInfo);
+				}
+				else {
+					project.getPackages().getLast().addClass(new ClassExplorer(project.getPath(),pack+"."+file.getName().replace(".class", "")).getClassInfo());
+				}
 			}
 		}
 	}
 
-	private String getPackageName(File directory) {
+	private String getRelativePackageName(File directory) {
 		String packagePath = directory.getAbsolutePath();
-		String basePath = new File("C:\\Users\\asus\\git\\repository7\\Abida Samira - UML Diagrams Generator\\bin").getAbsolutePath();
-		String packageName = packagePath.replace(basePath, "").replace(File.separator, ".");
-		return packageName.substring(1); 
+		String basePath = new File(project.getProjectName()).getAbsolutePath();
+		return packagePath.replace(basePath + File.separator + "bin" + File.separator, "").replace(File.separator, ".")
+				.substring(1);
 	}
 
-	private void getClasses(File directory, PackageInfo packageInfo) {
-		File[] files = directory.listFiles();
-		for (File file : files) {
-			if (file.isFile() && file.getName().endsWith(".class")) {
-
-				String className = file.getName().replace(".class", "");
-				packageInfo.addClass(new ClassInfo(className));
-			}
-		}
-	}
 
 	private void addClassesToPackages() {
 		List<PackageInfo> packages = project.getPackages();
 
 		for (PackageInfo packageInfo : packages) {
 			String packagePath = packageInfo.getPackageName().replace(".", File.separator);
-			Enumeration<URL> resources;
-
 			try {
-				resources = this.getClass().getClassLoader().getResources(packagePath);
+				Enumeration<URL> resources = this.getClass().getClassLoader().getResources(packagePath);
 
 				for (URL url : Collections.list(resources)) {
 					String fileName = new File(url.toURI()).getName();
 
 					if (fileName.endsWith(".class")) {
-						String className = fileName.replace(".class", "");
-						loadAndAddClassToPackage(className, packageInfo);
+						loadAndAddClassToPackage(fileName.replace(".class", ""), packageInfo);
 					}
 				}
 			} catch (Exception e) {

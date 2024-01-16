@@ -2,14 +2,16 @@ package org.mql.java.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class ProjectInfo {
 
     private String projectName;
-    private List<PackageInfo> packages;
+    private String path;
+    private Vector<PackageInfo> packages;
 
     public ProjectInfo() {
-        this.packages = new ArrayList<>();
+        this.packages = new Vector<>();
     }
 
     public ProjectInfo(String projectName) {
@@ -29,19 +31,31 @@ public class ProjectInfo {
         return packages;
     }
 
-    public void setPackages(List<PackageInfo> packages) {
+    public void setPackages(Vector<PackageInfo> packages) {
         this.packages = packages;
     }
 
     public void addPackage(PackageInfo packageInfo) {
+    	
+    	
         this.packages.add(packageInfo);
     }
 
-    public List<ClassInfo> getAllClasses() {
-        List<ClassInfo> allClasses = new ArrayList<>();
+    public Vector<ClassInfo> getAllClasses() {
+    	Vector<ClassInfo> allClasses = new Vector<>();
         for (PackageInfo p : packages) {
             allClasses.addAll(p.getClasses());
         }
         return allClasses;
     }
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+    
 }
+
