@@ -1,20 +1,21 @@
 package org.mql.java.reflection;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import org.mql.java.models.ClassInfo;
-import org.mql.java.models.Constructor;
-import org.mql.java.models.Method;
-import org.mql.java.models.Property;
 
 public class ClassExplorer {
 
 	private ClassInfo classInfo;
-	private ClassLoader classLoader; 
 
 	public ClassExplorer() {
 
@@ -22,77 +23,70 @@ public class ClassExplorer {
 
 	public ClassExplorer(String binPath, String classNameQl) {
 		try {
-
-			MyClassLoader classLoader=new MyClassLoader(binPath, classNameQl);
+			MyClassLoader classLoader = new MyClassLoader(binPath, classNameQl);
 			Class<?> cls = classLoader.getMaClass();
 
 			classInfo = new ClassInfo(cls.getSimpleName());
 			classInfo.setProperties(getProperties(cls));
 			classInfo.setConstructors(getConstructors(cls));
 			classInfo.setMethods(getMethods(cls));
+			classInfo.setInterfaces(getInterfaces(cls));
+			classInfo.setSuperClass(getSuperClass(cls));
+			classInfo.setInternClass(getInternClasses(cls));
+
+			RelationDetector relationDetector = new RelationDetector();
+			relationDetector.detectRelations(classInfo, cls);
+			relationDetector.detectUsageRelations(classInfo, binPath, classNameQl);
 
 		} catch (Exception e) {
 			System.out.println("Erreur : " + e.getMessage());
 		}
 	}
 
-	public List<Property> getProperties(Class<?> cls) {
-		List<Property> properties = new Vector<>();
+	public ClassInfo getClassInfo() {
+		return classInfo;
+	}
+
+
+	private List<String> getProperties(Class<?> cls) {
+		List<String> propertyNames = new ArrayList<>();
 
 		Field[] fields = cls.getDeclaredFields();
 		for (Field field : fields) {
-			String name = field.getName();
-			Class<?> type = field.getType();
-			String modifier = getModifier(field.getModifiers());
-			Property p = new Property(name, type, modifier);
-			properties.add(p);
+			propertyNames.add(field.getName());
 		}
-		return properties;
+		return propertyNames;
 	}
 
-	public List<Constructor> getConstructors(Class<?> cls) {
-		List<Constructor> constructors = new Vector<>();
-		java.lang.reflect.Constructor<?>[] cstrs = cls.getDeclaredConstructors();
 
-		for (java.lang.reflect.Constructor<?> constructor : cstrs) {
-			String name = cls.getSimpleName();
-			String modifier = getModifier(constructor.getModifiers());
-			Constructor c = new Constructor(modifier, name);
-			java.lang.reflect.Parameter[] params = constructor.getParameters();
-			for (java.lang.reflect.Parameter p : params) {
-				String paramName = p.getName();
-				Class<?> paramType = p.getType();
-				c.addParameter(new Property(paramName, paramType));
-			}
-			constructors.add(c);
+	private List<Constructor<?>> getConstructors(Class<?> cls) {
+		List<Constructor<?>> constructors = new ArrayList<>();
+		Constructor<?>[] javaConstructors = cls.getDeclaredConstructors();
+
+		for (Constructor<?> constructor : javaConstructors) {
+			constructors.add(constructor);
 		}
 		return constructors;
 	}
 
-	public List<Method> getMethods(Class<?> cls) {
-		List<Method> methods = new Vector<>();
+	private List<Method> getMethods(Class<?> cls) {
+		List<Method> methods = new ArrayList<>();
 
 		java.lang.reflect.Method[] allMethods = cls.getDeclaredMethods();
 		for (java.lang.reflect.Method method : allMethods) {
-			String name = method.getName();
-			Class<?> returnType = method.getReturnType();
-			String modifier = getModifier(method.getModifiers());
-			Method m = new Method(modifier, returnType, name);
-			java.lang.reflect.Parameter[] params = method.getParameters();
-			for (java.lang.reflect.Parameter p : params) {
-				m.addParameter(new Property(p.getName(), p.getType()));
-			}
-			methods.add(m);
+			methods.add(method);
 		}
 		return methods;
 	}
 
-	public String getSuperClass(Class<?> cls) {
-		return cls.getSuperclass().getSimpleName();
+	private String getSuperClass(Class<?> cls) {
+		Class<?> superClass = cls.getSuperclass();
+		return (superClass != null) ? superClass.getSimpleName() : "Object";
 	}
 
-	public List<String> getInterfaces(Class<?> cls) {
-		List<String> interfaces = new Vector<>();
+
+	private List<String> getInterfaces(Class<?> cls) {
+		List<String> interfaces = new ArrayList<>();
 		Class<?>[] inters = cls.getInterfaces();
 
 		for (Class<?> inter : inters) {
@@ -101,25 +95,17 @@ public class ClassExplorer {
 		return interfaces;
 	}
 
-	public List<String> getNestedClasses(Class<?> cls) {
-		List<String> nestedClasses = new Vector<>();
-		Class<?>[] nested = cls.getDeclaredClasses();
+	private List<String> getInternClasses(Class<?> cls) {
+		List<String> internClasses = new ArrayList<>();
+		Class<?>[] intern = cls.getDeclaredClasses();
 
-		for (Class<?> nestedClass : nested) {
-			nestedClasses.add(nestedClass.getSimpleName());
+		for (Class<?> internClass : intern) {
+			internClasses.add(internClass.getSimpleName());
 		}
-		return nestedClasses;
+		return internClasses;
 	}
 
-	public String getModifier(int m) {
+	private String getModifier(int m) {
 		return Modifier.toString(m);
-	}
-
-	public ClassInfo getClassInfo() {
-		return classInfo;
-	}
-
-	public void setClassInfo(ClassInfo classInfo) {
-		this.classInfo = classInfo;
 	}
 }

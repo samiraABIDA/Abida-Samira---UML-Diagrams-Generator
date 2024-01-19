@@ -6,48 +6,48 @@ import java.util.Vector;
 
 public class ProjectInfo {
 
-    private String projectName;
-    private String path;
-    private Vector<PackageInfo> packages;
+	private String projectName;
+	private String path;
+	private Vector<PackageInfo> packages;
 
-    public ProjectInfo() {
-        this.packages = new Vector<>();
-    }
+	public ProjectInfo() {
+		this.packages = new Vector<>();
+	}
 
-    public ProjectInfo(String projectName) {
-        this();
-        this.projectName = projectName;
-    }
+	public ProjectInfo(String projectName) {
+		this();
+		this.projectName = projectName;
+	}
 
-    public String getProjectName() {
-        return projectName;
-    }
+	public String getProjectName() {
+		return projectName;
+	}
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
 
-    public List<PackageInfo> getPackages() {
-        return packages;
-    }
+	public List<PackageInfo> getPackages() {
+		return packages;
+	}
 
-    public void setPackages(Vector<PackageInfo> packages) {
-        this.packages = packages;
-    }
+	public void setPackages(Vector<PackageInfo> packages) {
+		this.packages = packages;
+	}
 
-    public void addPackage(PackageInfo packageInfo) {
-    	
-    	
-        this.packages.add(packageInfo);
-    }
+	public void addPackage(PackageInfo packageInfo) {
 
-    public Vector<ClassInfo> getAllClasses() {
-    	Vector<ClassInfo> allClasses = new Vector<>();
-        for (PackageInfo p : packages) {
-            allClasses.addAll(p.getClasses());
-        }
-        return allClasses;
-    }
+
+		this.packages.add(packageInfo);
+	}
+
+	public Vector<ClassInfo> getAllClasses() {
+		Vector<ClassInfo> allClasses = new Vector<>();
+		for (PackageInfo p : packages) {
+			allClasses.addAll(p.getClasses());
+		}
+		return allClasses;
+	}
 
 	public String getPath() {
 		return path;
@@ -56,6 +56,6 @@ public class ProjectInfo {
 	public void setPath(String path) {
 		this.path = path;
 	}
-    
+
 }
 

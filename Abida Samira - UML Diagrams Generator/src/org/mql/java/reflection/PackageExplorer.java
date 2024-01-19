@@ -25,33 +25,23 @@ public class PackageExplorer {
 	}
 
 	private void explorePackages(File directory, String pack) {
-		int d = 0;
 		if (directory == null || !directory.exists()) {
 			return;
 		}
 
+		PackageInfo packageInfo = new PackageInfo(pack);
+		project.addPackage(packageInfo);
+
 		for (File file : directory.listFiles()) {
-
 			if (file.isDirectory()) {
-				String packageName = getRelativePackageName(file);
-
 				explorePackages(file, pack.isEmpty() ? file.getName() : pack + "." + file.getName());
-				// getClasses(file, packageInfo);
 			} else {
-				if (d == 0) {
-					d = 1;
-					PackageInfo packageInfo = new PackageInfo(pack);
-					packageInfo.addClass(new ClassExplorer(project.getPath(),pack+"."+file.getName().replace(".class", "")).getClassInfo());
-//					packageInfo.addClass(new ClassInfo(file.getName().replace(".class", "")));
-
-					project.addPackage(packageInfo);
-				}
-				else {
-					project.getPackages().getLast().addClass(new ClassExplorer(project.getPath(),pack+"."+file.getName().replace(".class", "")).getClassInfo());
-				}
+				packageInfo.addClass(new ClassExplorer(project.getPath(), pack + "." + file.getName().replace(".class", "")).getClassInfo());
 			}
 		}
 	}
+
+
 
 	private String getRelativePackageName(File directory) {
 		String packagePath = directory.getAbsolutePath();

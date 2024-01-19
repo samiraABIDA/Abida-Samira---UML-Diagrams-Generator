@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="MonProjet">
+	<package name="" />
+	<package name="org" />
+	<package name="org.mql" />
+	<package name="org.mql.java" />
+	<package name="org.mql.java.examples">
+		<class name="Examples">
+			<properties />
+			<constructors>
+				<constructor name="org.mql.java.examples.Examples"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="main" returnType="void" visibility="public" />
+				<method name="displayProjectInfo" returnType="void"
+					visibility="private" />
+				<method name="exp02" returnType="void" visibility="default" />
+				<method name="exp01" returnType="void" visibility="default" />
+			</methods>
+			<aggregationRelations>
+				<relation>String[]</relation>
+				<relation>ProjectInfo</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.lang.reflect.Constructor</relation>
+				<relation>java.lang.reflect.Method</relation>
+				<relation>java.util.List</relation>
+				<relation>org.mql.java.models.ClassInfo</relation>
+				<relation>org.mql.java.models.PackageInfo</relation>
+				<relation>org.mql.java.models.ProjectInfo</relation>
+				<relation>org.mql.java.reflection.PackageExplorer</relation>
+				<relation>org.mql.java.xml.XmlSerializer</relation>
+			</usageRelations>
+		</class>
+	</package>
+	<package name="org.mql.java.models">
+		<class name="ClassInfo">
+			<properties>
+				<property>className</property>
+				<property>properties</property>
+				<property>constructors</property>
+				<property>methods</property>
+				<property>interfaces</property>
+				<property>superClass</property>
+				<property>internClass</property>
+				<property>aggregationRelations</property>
+				<property>usageRelations</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.models.ClassInfo"
+					visibility="public" />
+				<constructor name="org.mql.java.models.ClassInfo"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="toString" returnType="java.lang.String"
+					visibility="public" />
+				<method name="clone" returnType="java.lang.Object"
+					visibility="public" />
+				<method name="clone"
+					returnType="org.mql.java.models.ClassInfo" visibility="public" />
+				<method name="getInterfaces" returnType="java.util.List"
+					visibility="public" />
+				<method name="getMethods" returnType="java.util.List"
+					visibility="public" />
+				<method name="getConstructors" returnType="java.util.List"
+					visibility="public" />
+				<method name="getProperties" returnType="java.util.List"
+					visibility="public" />
+				<method name="setProperties" returnType="void"
+					visibility="public" />
+				<method name="getClassName" returnType="java.lang.String"
+					visibility="public" />
+				<method name="getAggregationRelations"
+					returnType="java.util.List" visibility="public" />
+				<method name="getUsageRelations" returnType="java.util.List"
+					visibility="public" />
+				<method name="setConstructors" returnType="void"
+					visibility="public" />
+				<method name="setInterfaces" returnType="void"
+					visibility="public" />
+				<method name="getSuperClass" returnType="java.lang.String"
+					visibility="public" />
+				<method name="addProperty" returnType="void"
+					visibility="public" />
+				<method name="setSuperClass" returnType="void"
+					visibility="public" />
+				<method name="addConstructor" returnType="void"
+					visibility="public" />
+				<method name="setInternClass" returnType="void"
+					visibility="public" />
+				<method name="setUsageRelations" returnType="void"
+					visibility="public" />
+				<method name="addUsageRelation" returnType="void"
+					visibility="public" />
+				<method name="getInternClass" returnType="java.util.List"
+					visibility="public" />
+				<method name="setClassName" returnType="void"
+					visibility="public" />
+				<method name="setMethods" returnType="void"
+					visibility="public" />
+				<method name="addMethods" returnType="void"
+					visibility="public" />
+				<method name="setAggregationRelations" returnType="void"
+					visibility="public" />
+				<method name="addAggregationRelation" returnType="void"
+					visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>Object</relation>
+				<relation>ClassInfo</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>Constructor</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.lang.reflect.Constructor</relation>
+				<relation>java.lang.reflect.Method</relation>
+				<relation>java.util.ArrayList</relation>
+				<relation>java.util.List</relation>
+				<relation>java.util.Vector</relation>
+			</usageRelations>
+		</class>
+		<class name="Etudiant">
+			<properties>
+				<property>id</property>
+				<property>FirtName</property>
+				<property>LastName</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.models.Etudiant"
+					visibility="public" />
+				<constructor name="org.mql.java.models.Etudiant"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="toString" returnType="java.lang.String"
+					visibility="public" />
+				<method name="getId" returnType="int" visibility="public" />
+				<method name="setFirtName" returnType="void"
+					visibility="public" />
+				<method name="getFirtName" returnType="java.lang.String"
+					visibility="public" />
+				<method name="setLastName" returnType="void"
+					visibility="public" />
+				<method name="getLastName" returnType="java.lang.String"
+					visibility="public" />
+				<method name="setId" returnType="void" visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations />
+		</class>
+		<class name="PackageInfo">
+			<properties>
+				<property>packageName</property>
+				<property>classes</property>
+				<property>subPackages</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.models.PackageInfo"
+					visibility="public" />
+				<constructor name="org.mql.java.models.PackageInfo"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="clone" returnType="java.lang.Object"
+					visibility="public" />
+				<method name="clone"
+					returnType="org.mql.java.models.PackageInfo" visibility="public" />
+				<method name="getPackageName" returnType="java.lang.String"
+					visibility="public" />
+				<method name="getClasses" returnType="java.util.List"
+					visibility="public" />
+				<method name="addClass" returnType="void" visibility="public" />
+				<method name="addSubPackage" returnType="void"
+					visibility="public" />
+				<method name="getSubPackages" returnType="java.util.List"
+					visibility="public" />
+				<method name="setPackageName" returnType="void"
+					visibility="public" />
+				<method name="setSubPackages" returnType="void"
+					visibility="public" />
+				<method name="addPackage" returnType="void"
+					visibility="public" />
+				<method name="setClasses" returnType="void"
+					visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>Object</relation>
+				<relation>PackageInfo</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>ClassInfo</relation>
+				<relation>PackageInfo</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>PackageInfo</relation>
+				<relation>List</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.util.ArrayList</relation>
+				<relation>java.util.List</relation>
+			</usageRelations>
+		</class>
+		<class name="ProjectInfo">
+			<properties>
+				<property>projectName</property>
+				<property>path</property>
+				<property>packages</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.models.ProjectInfo"
+					visibility="public" />
+				<constructor name="org.mql.java.models.ProjectInfo"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="getPackages" returnType="java.util.List"
+					visibility="public" />
+				<method name="getPath" returnType="java.lang.String"
+					visibility="public" />
+				<method name="getAllClasses" returnType="java.util.Vector"
+					visibility="public" />
+				<method name="setPackages" returnType="void"
+					visibility="public" />
+				<method name="setProjectName" returnType="void"
+					visibility="public" />
+				<method name="getProjectName" returnType="java.lang.String"
+					visibility="public" />
+				<method name="addPackage" returnType="void"
+					visibility="public" />
+				<method name="setPath" returnType="void" visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>Vector</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>Vector</relation>
+				<relation>Vector</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>PackageInfo</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.util.ArrayList</relation>
+				<relation>java.util.List</relation>
+				<relation>java.util.Vector</relation>
+			</usageRelations>
+		</class>
+	</package>
+	<package name="org.mql.java.reflection">
+		<class name="ClassExplorer">
+			<properties>
+				<property>classInfo</property>
+			</properties>
+			<constructors>
+				<constructor
+					name="org.mql.java.reflection.ClassExplorer" visibility="public" />
+				<constructor
+					name="org.mql.java.reflection.ClassExplorer" visibility="public" />
+			</constructors>
+			<methods>
+				<method name="getInterfaces" returnType="java.util.List"
+					visibility="private" />
+				<method name="getMethods" returnType="java.util.List"
+					visibility="private" />
+				<method name="getConstructors" returnType="java.util.List"
+					visibility="private" />
+				<method name="getProperties" returnType="java.util.List"
+					visibility="private" />
+				<method name="getClassInfo"
+					returnType="org.mql.java.models.ClassInfo" visibility="public" />
+				<method name="getSuperClass" returnType="java.lang.String"
+					visibility="private" />
+				<method name="getModifier" returnType="java.lang.String"
+					visibility="private" />
+				<method name="getInternClasses" returnType="java.util.List"
+					visibility="private" />
+			</methods>
+			<aggregationRelations>
+				<relation>ClassInfo</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>ClassInfo</relation>
+				<relation>String</relation>
+				<relation>Class</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.io.BufferedReader</relation>
+				<relation>java.io.File</relation>
+				<relation>java.io.FileReader</relation>
+				<relation>java.io.IOException</relation>
+				<relation>java.lang.reflect.Constructor</relation>
+				<relation>java.lang.reflect.Field</relation>
+				<relation>java.lang.reflect.Method</relation>
+				<relation>java.lang.reflect.Modifier</relation>
+				<relation>java.util.ArrayList</relation>
+				<relation>java.util.List</relation>
+				<relation>org.mql.java.models.ClassInfo</relation>
+			</usageRelations>
+		</class>
+		<class name="MyClassLoader">
+			<properties>
+				<property>myClassLoader</property>
+				<property>maClasse</property>
+			</properties>
+			<constructors>
+				<constructor
+					name="org.mql.java.reflection.MyClassLoader" visibility="public" />
+			</constructors>
+			<methods>
+				<method name="closeClassLoader" returnType="void"
+					visibility="public" />
+				<method name="getMaClass" returnType="java.lang.Class"
+					visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>URLClassLoader</relation>
+				<relation>Class</relation>
+				<relation>Class</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.io.File</relation>
+				<relation>java.net.URL</relation>
+				<relation>java.net.URLClassLoader</relation>
+			</usageRelations>
+		</class>
+		<class name="PackageExplorer">
+			<properties>
+				<property>project</property>
+			</properties>
+			<constructors>
+				<constructor
+					name="org.mql.java.reflection.PackageExplorer" visibility="public" />
+			</constructors>
+			<methods>
+				<method name="explorePackages" returnType="void"
+					visibility="private" />
+				<method name="getProject"
+					returnType="org.mql.java.models.ProjectInfo" visibility="public" />
+				<method name="loadAndAddClassToPackage" returnType="void"
+					visibility="private" />
+				<method name="getRelativePackageName"
+					returnType="java.lang.String" visibility="private" />
+				<method name="addClassesToPackages" returnType="void"
+					visibility="private" />
+			</methods>
+			<aggregationRelations>
+				<relation>ProjectInfo</relation>
+				<relation>File</relation>
+				<relation>String</relation>
+				<relation>ProjectInfo</relation>
+				<relation>String</relation>
+				<relation>PackageInfo</relation>
+				<relation>String</relation>
+				<relation>File</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.io.File</relation>
+				<relation>java.net.URL</relation>
+				<relation>java.util.Collections</relation>
+				<relation>java.util.Enumeration</relation>
+				<relation>java.util.List</relation>
+				<relation>org.mql.java.models.ClassInfo</relation>
+				<relation>org.mql.java.models.PackageInfo</relation>
+				<relation>org.mql.java.models.ProjectInfo</relation>
+			</usageRelations>
+		</class>
+		<class name="ProjectExplorer">
+			<properties>
+				<property>packageNames</property>
+				<property>rootPath</property>
+			</properties>
+			<constructors>
+				<constructor
+					name="org.mql.java.reflection.ProjectExplorer" visibility="public" />
+			</constructors>
+			<methods>
+				<method name="getPackage" returnType="void"
+					visibility="public" />
+				<method name="getPackageNames" returnType="java.util.Set"
+					visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>Set</relation>
+				<relation>String</relation>
+				<relation>File</relation>
+				<relation>Set</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.io.File</relation>
+				<relation>java.util.HashSet</relation>
+				<relation>java.util.Set</relation>
+			</usageRelations>
+		</class>
+		<class name="RelationDetector">
+			<properties />
+			<constructors>
+				<constructor
+					name="org.mql.java.reflection.RelationDetector" visibility="public" />
+			</constructors>
+			<methods>
+				<method name="detectRelations" returnType="void"
+					visibility="public" />
+				<method name="getSourceFilePath"
+					returnType="java.lang.String" visibility="private" />
+				<method name="detectUsageRelations" returnType="void"
+					visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>ClassInfo</relation>
+				<relation>Class</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>ClassInfo</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.io.BufferedReader</relation>
+				<relation>java.io.File</relation>
+				<relation>java.io.FileReader</relation>
+				<relation>java.io.IOException</relation>
+				<relation>java.lang.reflect.Field</relation>
+				<relation>java.lang.reflect.Method</relation>
+				<relation>org.mql.java.models.ClassInfo</relation>
+			</usageRelations>
+		</class>
+	</package>
+	<package name="org.mql.java.ui" />
+	<package name="org.mql.java.xml">
+		<class name="XmlSerializer">
+			<properties />
+			<constructors>
+				<constructor name="org.mql.java.xml.XmlSerializer"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="serializeToXml" returnType="void"
+					visibility="public" />
+				<method name="serializeMethods" returnType="void"
+					visibility="private" />
+				<method name="serializePackages" returnType="void"
+					visibility="private" />
+				<method name="serializeClasses" returnType="void"
+					visibility="private" />
+				<method name="serializeAggregationRelations"
+					returnType="void" visibility="private" />
+				<method name="serializeConstructors" returnType="void"
+					visibility="private" />
+				<method name="getVisibilityModifier"
+					returnType="java.lang.String" visibility="private" />
+				<method name="serializeUsageRelations" returnType="void"
+					visibility="private" />
+			</methods>
+			<aggregationRelations>
+				<relation>ProjectInfo</relation>
+				<relation>String</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>java.io.File</relation>
+				<relation>java.lang.reflect.Constructor</relation>
+				<relation>java.lang.reflect.Method</relation>
+				<relation>java.util.List</relation>
+				<relation>javax.xml.parsers.DocumentBuilder</relation>
+				<relation>javax.xml.parsers.DocumentBuilderFactory</relation>
+				<relation>javax.xml.transform.Transformer</relation>
+				<relation>javax.xml.transform.TransformerFactory</relation>
+				<relation>javax.xml.transform.dom.DOMSource</relation>
+				<relation>javax.xml.transform.stream.StreamResult</relation>
+				<relation>org.mql.java.models.ClassInfo</relation>
+				<relation>org.mql.java.models.PackageInfo</relation>
+				<relation>org.mql.java.models.ProjectInfo</relation>
+				<relation>org.w3c.dom.Document</relation>
+				<relation>org.w3c.dom.Element</relation>
+			</usageRelations>
+		</class>
+	</package>
+</project>

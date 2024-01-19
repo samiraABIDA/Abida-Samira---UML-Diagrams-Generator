@@ -25,7 +25,7 @@ public class ProjectExplorer {
         for (File file : files) {
             if (file.isDirectory()) {
                 String packageName = file.getPath().replace(rootPath, "").replace("\\", ".");
-                packageNames.add(packageName.substring(1)); // Remove leading dot
+                packageNames.add(packageName.substring(1)); 
                 getPackage(file);
             }
         }

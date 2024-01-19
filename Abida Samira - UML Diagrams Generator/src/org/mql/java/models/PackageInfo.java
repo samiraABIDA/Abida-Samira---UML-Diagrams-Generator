@@ -51,8 +51,33 @@ public class PackageInfo {
         this.subPackages.add(subPackage);
     }
     
-    // Ajout de la méthode addPackage
+ 
     public void addPackage(PackageInfo packageInfo) {
         this.subPackages.add(packageInfo);
     }
+    
+    public PackageInfo clone() {
+        PackageInfo clonedPackage = new PackageInfo(this.packageName);
+       
+        clonedPackage.setClasses(new ArrayList<>());
+        clonedPackage.setSubPackages(new ArrayList<>());
+
+        for (ClassInfo classInfo : this.classes) {
+            clonedPackage.addClass(classInfo.clone());
+        }
+
+        for (PackageInfo subPackage : this.subPackages) {
+            clonedPackage.addSubPackage(subPackage.clone());
+        }
+
+        return clonedPackage;
+    }
+
+
 }
+    
+    
+
+
+
+
