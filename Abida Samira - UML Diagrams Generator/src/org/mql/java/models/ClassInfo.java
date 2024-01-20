@@ -21,6 +21,8 @@ public class ClassInfo {
 		this.properties = new Vector<String>();
 		this.constructors = new Vector<Constructor<?>>();
 		this.methods = new Vector<Method>();
+		this.interfaces = new Vector<>();  
+		this.internClass = new Vector<>();
 		this.aggregationRelations = new Vector<String>();
 		this.usageRelations = new Vector<String>();
 	}
@@ -70,9 +72,10 @@ public class ClassInfo {
 		this.methods = methods;
 	}
 
-	public void addMethods(List<Method> methods) {
-		this.methods.addAll(methods);
+	public void addMethod(Method method) {
+	    this.methods.add(method);
 	}
+
 
 	public List<String> getInterfaces() {
 		return interfaces;
@@ -97,6 +100,7 @@ public class ClassInfo {
 	public void setInternClass(List<String> internClass) {
 		this.internClass = internClass;
 	}
+
 
 	public List<String> getAggregationRelations() {
 		return aggregationRelations;
@@ -129,17 +133,39 @@ public class ClassInfo {
 				+ ", internClass=" + internClass + ", aggregationRelations=" + aggregationRelations + "]";
 	}
 
+
+
+	public void addInternClass(String internClass) {
+	    if (this.internClass == null) {
+	        this.internClass = new Vector<>();
+	    }
+	    this.internClass.add(internClass);
+	}
+
+	public void addInterfaces(List<String> interfaces) {
+	    if (this.interfaces == null) {
+	        this.interfaces = new Vector<>();
+	    }
+	    this.interfaces.addAll(interfaces);
+	}
+
+	public void addInterface(String interfaceName) {
+	    this.interfaces.add(interfaceName);
+	}
+
+
+
 	public ClassInfo clone() {
 		ClassInfo clonedClass = new ClassInfo(this.className);
 
-		clonedClass.setProperties(new ArrayList<>(this.properties));
-		clonedClass.setConstructors(new ArrayList<>(this.constructors));
-		clonedClass.setMethods(new ArrayList<>(this.methods));
-		clonedClass.setInterfaces(new ArrayList<>(this.interfaces));
+		clonedClass.setProperties(new Vector<>(this.properties));
+		clonedClass.setConstructors(new Vector<>(this.constructors));
+		clonedClass.setMethods(new Vector<>(this.methods));
+		clonedClass.setInterfaces(new Vector<>(this.interfaces));
 		clonedClass.setSuperClass(this.superClass);
-		clonedClass.setInternClass(new ArrayList<>(this.internClass));
-		clonedClass.setAggregationRelations(new ArrayList<>(this.aggregationRelations));
-		clonedClass.setUsageRelations(new ArrayList<>(this.usageRelations));
+		clonedClass.setInternClass(new Vector<>(this.internClass));
+		clonedClass.setAggregationRelations(new Vector<>(this.aggregationRelations));
+		clonedClass.setUsageRelations(new Vector<>(this.usageRelations));
 		return clonedClass;
 	}
 }

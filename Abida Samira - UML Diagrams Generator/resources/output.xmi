@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><xmi:Project xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.omg.org/spec/UML/20090901"><xmi:Package name="org.mql.java.examples"><xmi:Class name="Examples"><xmi:methode name="main" xmi:type="uml:methode"/>
+<xmi:methode name="extractConstructorName" xmi:type="uml:methode"/>
+<xmi:methode name="exp03" xmi:type="uml:methode"/>
+<xmi:methode name="exp01" xmi:type="uml:methode"/>
+<xmi:methode name="exp02" xmi:type="uml:methode"/>
+<xmi:methode name="exp04" xmi:type="uml:methode"/>
+<xmi:methode name="lambda$0" xmi:type="uml:methode"/>
+<xmi:methode name="lambda$1" xmi:type="uml:methode"/>
+<xmi:methode name="displayProjectInfo" xmi:type="uml:methode"/>
+</xmi:Class>
+</xmi:Package>
+<xmi:Package name="org.mql.java.models"><xmi:Class name="ClassInfo"><xmi:Attribute name="className" xmi:type="uml:Property"/>
+<xmi:Attribute name="properties" xmi:type="uml:Property"/>
+<xmi:Attribute name="constructors" xmi:type="uml:Property"/>
+<xmi:Attribute name="methods" xmi:type="uml:Property"/>
+<xmi:Attribute name="interfaces" xmi:type="uml:Property"/>
+<xmi:Attribute name="superClass" xmi:type="uml:Property"/>
+<xmi:Attribute name="internClass" xmi:type="uml:Property"/>
+<xmi:Attribute name="aggregationRelations" xmi:type="uml:Property"/>
+<xmi:Attribute name="usageRelations" xmi:type="uml:Property"/>
+<xmi:methode name="toString" xmi:type="uml:methode"/>
+<xmi:methode name="clone" xmi:type="uml:methode"/>
+<xmi:methode name="clone" xmi:type="uml:methode"/>
+<xmi:methode name="getInterfaces" xmi:type="uml:methode"/>
+<xmi:methode name="getMethods" xmi:type="uml:methode"/>
+<xmi:methode name="getConstructors" xmi:type="uml:methode"/>
+<xmi:methode name="getProperties" xmi:type="uml:methode"/>
+<xmi:methode name="setProperties" xmi:type="uml:methode"/>
+<xmi:methode name="getClassName" xmi:type="uml:methode"/>
+<xmi:methode name="addMethod" xmi:type="uml:methode"/>
+<xmi:methode name="getAggregationRelations" xmi:type="uml:methode"/>
+<xmi:methode name="setMethods" xmi:type="uml:methode"/>
+<xmi:methode name="getInternClass" xmi:type="uml:methode"/>
+<xmi:methode name="addInternClass" xmi:type="uml:methode"/>
+<xmi:methode name="getUsageRelations" xmi:type="uml:methode"/>
+<xmi:methode name="setAggregationRelations" xmi:type="uml:methode"/>
+<xmi:methode name="addAggregationRelation" xmi:type="uml:methode"/>
+<xmi:methode name="addConstructor" xmi:type="uml:methode"/>
+<xmi:methode name="setUsageRelations" xmi:type="uml:methode"/>
+<xmi:methode name="addUsageRelation" xmi:type="uml:methode"/>
+<xmi:methode name="addInterfaces" xmi:type="uml:methode"/>
+<xmi:methode name="addInterface" xmi:type="uml:methode"/>
+<xmi:methode name="setConstructors" xmi:type="uml:methode"/>
+<xmi:methode name="getSuperClass" xmi:type="uml:methode"/>
+<xmi:methode name="setSuperClass" xmi:type="uml:methode"/>
+<xmi:methode name="setInterfaces" xmi:type="uml:methode"/>
+<xmi:methode name="setInternClass" xmi:type="uml:methode"/>
+<xmi:methode name="setClassName" xmi:type="uml:methode"/>
+<xmi:methode name="addProperty" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="Etudiant"><xmi:Attribute name="id" xmi:type="uml:Property"/>
+<xmi:Attribute name="FirtName" xmi:type="uml:Property"/>
+<xmi:Attribute name="LastName" xmi:type="uml:Property"/>
+<xmi:methode name="toString" xmi:type="uml:methode"/>
+<xmi:methode name="getId" xmi:type="uml:methode"/>
+<xmi:methode name="setId" xmi:type="uml:methode"/>
+<xmi:methode name="getFirtName" xmi:type="uml:methode"/>
+<xmi:methode name="getLastName" xmi:type="uml:methode"/>
+<xmi:methode name="setFirtName" xmi:type="uml:methode"/>
+<xmi:methode name="setLastName" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="PackageInfo"><xmi:Attribute name="packageName" xmi:type="uml:Property"/>
+<xmi:Attribute name="classes" xmi:type="uml:Property"/>
+<xmi:Attribute name="subPackages" xmi:type="uml:Property"/>
+<xmi:methode name="clone" xmi:type="uml:methode"/>
+<xmi:methode name="clone" xmi:type="uml:methode"/>
+<xmi:methode name="getPackageName" xmi:type="uml:methode"/>
+<xmi:methode name="getClasses" xmi:type="uml:methode"/>
+<xmi:methode name="addClass" xmi:type="uml:methode"/>
+<xmi:methode name="addPackage" xmi:type="uml:methode"/>
+<xmi:methode name="setClasses" xmi:type="uml:methode"/>
+<xmi:methode name="getSubPackages" xmi:type="uml:methode"/>
+<xmi:methode name="setPackageName" xmi:type="uml:methode"/>
+<xmi:methode name="setSubPackages" xmi:type="uml:methode"/>
+<xmi:methode name="addSubPackage" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="ProjectInfo"><xmi:Attribute name="projectName" xmi:type="uml:Property"/>
+<xmi:Attribute name="path" xmi:type="uml:Property"/>
+<xmi:Attribute name="packages" xmi:type="uml:Property"/>
+<xmi:methode name="getPackages" xmi:type="uml:methode"/>
+<xmi:methode name="getPath" xmi:type="uml:methode"/>
+<xmi:methode name="addPackage" xmi:type="uml:methode"/>
+<xmi:methode name="setPath" xmi:type="uml:methode"/>
+<xmi:methode name="setProjectName" xmi:type="uml:methode"/>
+<xmi:methode name="getAllClasses" xmi:type="uml:methode"/>
+<xmi:methode name="setPackages" xmi:type="uml:methode"/>
+<xmi:methode name="getProjectName" xmi:type="uml:methode"/>
+</xmi:Class>
+</xmi:Package>
+<xmi:Package name="org.mql.java.reflection"><xmi:Class name="ClassExplorer"><xmi:Attribute name="classInfo" xmi:type="uml:Property"/>
+<xmi:methode name="getInterfaces" xmi:type="uml:methode"/>
+<xmi:methode name="getMethods" xmi:type="uml:methode"/>
+<xmi:methode name="getConstructors" xmi:type="uml:methode"/>
+<xmi:methode name="getProperties" xmi:type="uml:methode"/>
+<xmi:methode name="getClassInfo" xmi:type="uml:methode"/>
+<xmi:methode name="getModifier" xmi:type="uml:methode"/>
+<xmi:methode name="getInternClasses" xmi:type="uml:methode"/>
+<xmi:methode name="getSuperClass" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="MyClassLoader"><xmi:Attribute name="myClassLoader" xmi:type="uml:Property"/>
+<xmi:Attribute name="maClasse" xmi:type="uml:Property"/>
+<xmi:methode name="closeClassLoader" xmi:type="uml:methode"/>
+<xmi:methode name="getMaClass" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="PackageExplorer"><xmi:Attribute name="project" xmi:type="uml:Property"/>
+<xmi:methode name="getProject" xmi:type="uml:methode"/>
+<xmi:methode name="explorePackages" xmi:type="uml:methode"/>
+<xmi:methode name="getRelativePackageName" xmi:type="uml:methode"/>
+<xmi:methode name="loadAndAddClassToPackage" xmi:type="uml:methode"/>
+<xmi:methode name="addClassesToPackages" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="ProjectExplorer"><xmi:Attribute name="packageNames" xmi:type="uml:Property"/>
+<xmi:Attribute name="rootPath" xmi:type="uml:Property"/>
+<xmi:methode name="getPackage" xmi:type="uml:methode"/>
+<xmi:methode name="getPackageNames" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="RelationDetector"><xmi:methode name="detectUsageRelations" xmi:type="uml:methode"/>
+<xmi:methode name="detectRelations" xmi:type="uml:methode"/>
+<xmi:methode name="getSourceFilePath" xmi:type="uml:methode"/>
+</xmi:Class>
+</xmi:Package>
+<xmi:Package name="org.mql.java.xml"><xmi:Class name="XMIGenerator"><xmi:methode name="addAttributes" xmi:type="uml:methode"/>
+<xmi:methode name="addMethods" xmi:type="uml:methode"/>
+<xmi:methode name="generateXMI" xmi:type="uml:methode"/>
+<xmi:methode name="addNewLineElement" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="XMIParser"><xmi:methode name="parseXMI" xmi:type="uml:methode"/>
+<xmi:methode name="parseClass" xmi:type="uml:methode"/>
+<xmi:methode name="getMethodSignature" xmi:type="uml:methode"/>
+<xmi:methode name="parsePackage" xmi:type="uml:methode"/>
+<xmi:methode name="printClassInfo" xmi:type="uml:methode"/>
+<xmi:methode name="printPackageInfo" xmi:type="uml:methode"/>
+<xmi:methode name="printProjectInfo" xmi:type="uml:methode"/>
+</xmi:Class>
+<xmi:Class name="XmlSerializer"><xmi:methode name="serializeAggregationRelations" xmi:type="uml:methode"/>
+<xmi:methode name="serializeToXml" xmi:type="uml:methode"/>
+<xmi:methode name="serializeClasses" xmi:type="uml:methode"/>
+<xmi:methode name="serializeMethods" xmi:type="uml:methode"/>
+<xmi:methode name="serializePackages" xmi:type="uml:methode"/>
+<xmi:methode name="serializeUsageRelations" xmi:type="uml:methode"/>
+<xmi:methode name="serializeInternClasses" xmi:type="uml:methode"/>
+<xmi:methode name="getVisibilityModifier" xmi:type="uml:methode"/>
+<xmi:methode name="serializeConstructors" xmi:type="uml:methode"/>
+<xmi:methode name="serializeProperties" xmi:type="uml:methode"/>
+</xmi:Class>
+</xmi:Package>
+</xmi:Project>

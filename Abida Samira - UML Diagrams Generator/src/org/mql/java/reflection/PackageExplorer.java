@@ -24,22 +24,30 @@ public class PackageExplorer {
 		// addClassesToPackages();
 	}
 
-	private void explorePackages(File directory, String pack) {
-		if (directory == null || !directory.exists()) {
-			return;
-		}
+	private void explorePackages(File directory, String parentPackage) {
+	    if (directory == null || !directory.exists()) {
+	        return;
+	    }
 
-		PackageInfo packageInfo = new PackageInfo(pack);
-		project.addPackage(packageInfo);
+	    PackageInfo packageInfo = new PackageInfo(parentPackage);
+	    boolean containsClasses = false;
 
-		for (File file : directory.listFiles()) {
-			if (file.isDirectory()) {
-				explorePackages(file, pack.isEmpty() ? file.getName() : pack + "." + file.getName());
-			} else {
-				packageInfo.addClass(new ClassExplorer(project.getPath(), pack + "." + file.getName().replace(".class", "")).getClassInfo());
-			}
-		}
+	    for (File file : directory.listFiles()) {
+	        if (file.isDirectory()) {
+	            explorePackages(file, parentPackage.isEmpty() ? file.getName() : parentPackage + "." + file.getName());
+	        } else {
+	            containsClasses = true;
+	            packageInfo.addClass(new ClassExplorer(project.getPath(), parentPackage + "." + file.getName().replace(".class", "")).getClassInfo());
+	        }
+	    }
+
+	    // Ajouter le package à la liste uniquement s'il contient des classes directement
+	    if (containsClasses) {
+	        project.addPackage(packageInfo);
+	    }
 	}
+
+
 
 
 

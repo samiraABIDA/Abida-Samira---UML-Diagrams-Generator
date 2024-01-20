@@ -68,7 +68,6 @@ public class XmlSerializer {
         parentElement.appendChild(usageRelationsElement);
     }
 
-
     private void serializeConstructors(Document doc, Element parentElement, List<Constructor<?>> constructors) {
         Element constructorsElement = doc.createElement("constructors");
 
@@ -81,6 +80,19 @@ public class XmlSerializer {
 
         parentElement.appendChild(constructorsElement);
     }
+    
+    private void serializeProperties(Document doc, Element parentElement, List<String> properties) {
+        Element propertiesElement = doc.createElement("properties");
+
+        for (String property : properties) {
+            Element propertyElement = doc.createElement("property");
+            propertyElement.appendChild(doc.createTextNode(property));
+            propertiesElement.appendChild(propertyElement);
+        }
+
+        parentElement.appendChild(propertiesElement);
+    }
+
 
     private void serializeMethods(Document doc, Element parentElement, List<Method> methods) {
         Element methodsElement = doc.createElement("methods");
@@ -95,7 +107,6 @@ public class XmlSerializer {
 
         parentElement.appendChild(methodsElement);
     }
-
 
     private String getVisibilityModifier(int modifiers) {
         if (java.lang.reflect.Modifier.isPublic(modifiers)) {
@@ -114,7 +125,7 @@ public class XmlSerializer {
             Element classElement = doc.createElement("class");
             classElement.setAttribute("name", classInfo.getClassName());
 
-           
+            // Serialize properties
             List<String> properties = classInfo.getProperties();
             Element propertiesElement = doc.createElement("properties");
             for (String property : properties) {
@@ -122,16 +133,42 @@ public class XmlSerializer {
                 propertyElement.appendChild(doc.createTextNode(property));
                 propertiesElement.appendChild(propertyElement);
             }
-            classElement.appendChild(propertiesElement); 
+            classElement.appendChild(propertiesElement); // Add properties to the class element
+
+            // Serialize properties
+            serializeProperties(doc, classElement, classInfo.getProperties());
+
+            
+            // Serialize constructors
             serializeConstructors(doc, classElement, classInfo.getConstructors());
+
+            // Serialize methods
             serializeMethods(doc, classElement, classInfo.getMethods());
+
+            // Serialize aggregation relations
             serializeAggregationRelations(doc, classElement, classInfo.getAggregationRelations());
+
+            // Serialize usage relations
             serializeUsageRelations(doc, classElement, classInfo.getUsageRelations());
-            parentElement.appendChild(classElement); 
+
+            // Serialize inner classes
+            serializeInternClasses(doc, classElement, classInfo.getInternClass());
+
+            parentElement.appendChild(classElement); // Add the class element to the parent element
         }
     }
 
-
+    private void serializeInternClasses(Document doc, Element parentElement, List<String> internClasses) {
+        if (!internClasses.isEmpty()) {
+            Element internClassesElement = doc.createElement("internClasses");
+            for (String internClass : internClasses) {
+                Element internClassElement = doc.createElement("internClass");
+                internClassElement.appendChild(doc.createTextNode(internClass));
+                internClassesElement.appendChild(internClassElement);
+            }
+            parentElement.appendChild(internClassesElement);
+        }
+    }
 
     private void serializePackages(Document doc, Element parentElement, List<PackageInfo> packages) {
         for (PackageInfo packageInfo : packages) {

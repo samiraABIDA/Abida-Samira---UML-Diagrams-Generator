@@ -53,26 +53,32 @@ public class RelationDetector {
 	        }
 	    }
 
-	    public void detectUsageRelations(ClassInfo classInfo, String binPath, String classNameQl) {
-	        try {
-	            String sourceFilePath = getSourceFilePath(binPath, classNameQl);
+	   public void detectUsageRelations(ClassInfo classInfo, String binPath, String classNameQl) {
+		    try {
+		        String sourceFilePath = getSourceFilePath(binPath, classNameQl);
 
-	          
-	            try (BufferedReader reader = new BufferedReader(new FileReader(sourceFilePath))) {
-	                String line;
-	                while ((line = reader.readLine()) != null) {
-	                    if (line.startsWith("import ")) {
-	                        
-	                        String importedClass = line.substring("import ".length(), line.length() - 1).trim().replace(";", "");
+		        try (BufferedReader reader = new BufferedReader(new FileReader(sourceFilePath))) {
+		            String line;
+		            while ((line = reader.readLine()) != null) {
+		                if (line.startsWith("import ")) {
+		                    // Récupérer uniquement le nom de la classe depuis l'import
+		                    String importedClass = line.substring("import ".length(), line.length() - 1).trim().replace(";", "");
+		                    
+		                    // Extraire le nom de la classe à partir du chemin complet
+		                    int lastDotIndex = importedClass.lastIndexOf(".");
+		                    if (lastDotIndex != -1) {
+		                        importedClass = importedClass.substring(lastDotIndex + 1);
+		                    }
 
-	                        classInfo.addUsageRelation(importedClass);
-	                    }
-	                }
-	            }
-	        } catch (IOException e) {
-	            System.out.println("Erreur lors de la détection des relations d'utilisation : " + e.getMessage());
-	        }
-	    }
+		                    classInfo.addUsageRelation(importedClass);
+		                }
+		            }
+		        }
+		    } catch (IOException e) {
+		        System.out.println("Erreur lors de la détection des relations d'utilisation : " + e.getMessage());
+		    }
+		}
+
 
 	    private String getSourceFilePath(String binPath, String classNameQl) {
 	      
