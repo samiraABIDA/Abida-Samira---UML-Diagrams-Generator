@@ -1,9 +1,10 @@
 package org.mql.java.xml;
 
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.List;
+import org.mql.java.models.ClassInfo;
+import org.mql.java.models.PackageInfo;
+import org.mql.java.models.ProjectInfo;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,12 +12,10 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.mql.java.models.ClassInfo;
-import org.mql.java.models.PackageInfo;
-import org.mql.java.models.ProjectInfo;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.List;
 
 public class XmlSerializer {
 
@@ -80,7 +79,7 @@ public class XmlSerializer {
 
         parentElement.appendChild(constructorsElement);
     }
-    
+
     private void serializeProperties(Document doc, Element parentElement, List<String> properties) {
         Element propertiesElement = doc.createElement("properties");
 
@@ -92,7 +91,6 @@ public class XmlSerializer {
 
         parentElement.appendChild(propertiesElement);
     }
-
 
     private void serializeMethods(Document doc, Element parentElement, List<Method> methods) {
         Element methodsElement = doc.createElement("methods");
@@ -126,19 +124,8 @@ public class XmlSerializer {
             classElement.setAttribute("name", classInfo.getClassName());
 
             // Serialize properties
-            List<String> properties = classInfo.getProperties();
-            Element propertiesElement = doc.createElement("properties");
-            for (String property : properties) {
-                Element propertyElement = doc.createElement("property");
-                propertyElement.appendChild(doc.createTextNode(property));
-                propertiesElement.appendChild(propertyElement);
-            }
-            classElement.appendChild(propertiesElement); // Add properties to the class element
-
-            // Serialize properties
             serializeProperties(doc, classElement, classInfo.getProperties());
 
-            
             // Serialize constructors
             serializeConstructors(doc, classElement, classInfo.getConstructors());
 

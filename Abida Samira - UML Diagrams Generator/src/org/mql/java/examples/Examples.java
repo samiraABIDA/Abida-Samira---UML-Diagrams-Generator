@@ -12,6 +12,7 @@ import org.mql.java.models.ProjectInfo;
 import org.mql.java.reflection.PackageExplorer;
 import org.mql.java.xml.XMIGenerator;
 import org.mql.java.xml.XMIParser;
+import org.mql.java.xml.XMLParser;
 import org.mql.java.xml.XmlSerializer;
 
 public class Examples {
@@ -60,6 +61,22 @@ public class Examples {
     }
   
     void exp03() {
+    	
+        XMLParser xmlParser = new XMLParser();
+        ProjectInfo projectInfo = xmlParser.parseXml("resources/output.xml");
+
+        if (projectInfo != null) {
+            System.out.println("Le fichier XML a été correctement analysé.");
+            displayProjectInfo(projectInfo);
+        } else {
+            System.out.println("Erreur lors de l'analyse du fichier XML. Assurez-vous que le fichier est correct.");
+        }
+    	
+         
+    }
+    
+    
+    void exp04() {
        
         String projectPath = "C:\\Users\\asus\\\\git\\repository7\\Abida Samira - UML Diagrams Generator";
         PackageExplorer packageExplorer = new PackageExplorer(projectPath);
@@ -73,7 +90,9 @@ public class Examples {
     }
     
     
-   void exp04() {
+ 
+    
+   void exp05() {
 	   
 	      /*  XMIParser xmiParser = new XMIParser();
 	        ProjectInfo projectInfo = xmiParser.parseXMI("resources/output.xmi");
@@ -101,7 +120,12 @@ public class Examples {
 
 	            // Display Methods
 	            System.out.println("    Methods:");
-	            classInfo.getMethods().forEach(method -> System.out.println("      " + method.getName()));
+	            classInfo.getMethodNames().forEach(methodName -> {
+	                // Extract only the method name without the full path
+	                int lastDotIndex = methodName.lastIndexOf('.');
+	                String shortMethodName = (lastDotIndex != -1) ? methodName.substring(lastDotIndex + 1) : methodName;
+	                System.out.println("      " + shortMethodName);
+	            });
 
 	            // Display Constructors
 	            System.out.println("    Constructors:");

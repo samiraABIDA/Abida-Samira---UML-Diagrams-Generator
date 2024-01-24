@@ -73,7 +73,16 @@ public class PackageInfo {
         return clonedPackage;
     }
 
-
+    public void display(int indentationLevel) {
+        String indentation = "  ".repeat(indentationLevel); 
+        System.out.println(indentation + "Package: " + packageName);
+        for (ClassInfo c : classes) {
+            c.display(indentationLevel + 1); 
+        }
+        for (PackageInfo p : subPackages) {
+            p.display(indentationLevel + 1);
+        }
+    }
 }
     
     

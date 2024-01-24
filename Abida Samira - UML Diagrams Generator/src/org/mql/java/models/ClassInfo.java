@@ -11,11 +11,13 @@ public class ClassInfo {
 	private List<String> properties;
 	private List<Constructor<?>> constructors;
 	private List<Method> methods;
+	private Vector<String> methodNames;
 	private List<String> interfaces;
 	private String superClass;
 	private List<String> internClass;
 	private List<String> aggregationRelations;
 	private List<String> usageRelations;
+	private List<String> methodsNames;
 
 	public ClassInfo() {
 		this.properties = new Vector<String>();
@@ -76,6 +78,23 @@ public class ClassInfo {
 	    this.methods.add(method);
 	}
 
+    public void addMethodName(String methodName) {
+        methodNames.add(methodName);
+    }
+
+    public void setMethodsNames(List<String> methodsNames) {
+        this.methodsNames = methodsNames;
+    }
+    
+    public List<String> getMethodNames() {
+        List<String> methodNames = new ArrayList<>();
+        for (Method method : methods) {
+            String methodName = method.getName();
+            int lastDotIndex = methodName.lastIndexOf('.');
+            methodNames.add((lastDotIndex != -1) ? methodName.substring(lastDotIndex + 1) : methodName);
+        }
+        return methodNames;
+    }
 
 	public List<String> getInterfaces() {
 		return interfaces;
@@ -168,5 +187,36 @@ public class ClassInfo {
 		clonedClass.setUsageRelations(new Vector<>(this.usageRelations));
 		return clonedClass;
 	}
+	
+	public void display(int indentationLevel) {
+        String indentation = "  ".repeat(indentationLevel); // Ajouter l'indentation
+        System.out.println(indentation + "Class: " + className);
+        
+        // Afficher les propriétés
+        System.out.println(indentation + "  Properties: " + properties);
+
+        // Afficher les constructeurs
+        System.out.println(indentation + "  Constructors:");
+        for (Constructor<?> constructor : constructors) {
+            System.out.println(indentation + "    " + constructor);
+        }
+
+        // Afficher les méthodes
+        System.out.println(indentation + "  Methods:");
+        for (Method method : methods) {
+            System.out.println(indentation + "    " + method);
+        }
+
+        // Afficher les relations d'agrégation
+        System.out.println(indentation + "  Aggregation Relations: " + aggregationRelations);
+
+        // Afficher les relations d'utilisation
+        System.out.println(indentation + "  Usage Relations: " + usageRelations);
+
+        // Afficher les classes internes
+        System.out.println(indentation + "  Inner Classes: " + internClass);
+
+
+    }
 }
 

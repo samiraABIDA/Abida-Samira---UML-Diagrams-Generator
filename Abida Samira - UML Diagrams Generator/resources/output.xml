@@ -3,33 +3,33 @@
 	<package name="org.mql.java.examples">
 		<class name="Examples">
 			<properties />
-			<properties />
 			<constructors>
 				<constructor name="org.mql.java.examples.Examples"
 					visibility="public" />
 			</constructors>
 			<methods>
+				<method name="main" returnType="void" visibility="public" />
 				<method name="extractConstructorName"
 					returnType="java.lang.String" visibility="private" />
 				<method name="displayProjectInfo" returnType="void"
 					visibility="private" />
-				<method name="exp02" returnType="void" visibility="default" />
-				<method name="exp01" returnType="void" visibility="default" />
-				<method name="exp03" returnType="void" visibility="default" />
 				<method name="exp04" returnType="void" visibility="default" />
-				<method name="lambda$0" returnType="void"
-					visibility="private" />
+				<method name="exp05" returnType="void" visibility="default" />
+				<method name="exp01" returnType="void" visibility="default" />
 				<method name="lambda$1" returnType="void"
 					visibility="private" />
-				<method name="main" returnType="void" visibility="public" />
+				<method name="exp02" returnType="void" visibility="default" />
+				<method name="lambda$0" returnType="void"
+					visibility="private" />
+				<method name="exp03" returnType="void" visibility="default" />
 			</methods>
 			<aggregationRelations>
+				<relation>String[]</relation>
 				<relation>String</relation>
 				<relation>String</relation>
 				<relation>ProjectInfo</relation>
-				<relation>Method</relation>
 				<relation>Constructor</relation>
-				<relation>String[]</relation>
+				<relation>Method</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>Constructor</relation>
@@ -43,6 +43,9 @@
 				<relation>PackageExplorer</relation>
 				<relation>XMIGenerator</relation>
 				<relation>XMIParser</relation>
+				<relation>XMLLoader</relation>
+				<relation>XMLNode</relation>
+				<relation>XMLParser</relation>
 				<relation>XmlSerializer</relation>
 			</usageRelations>
 		</class>
@@ -60,17 +63,6 @@
 				<property>aggregationRelations</property>
 				<property>usageRelations</property>
 			</properties>
-			<properties>
-				<property>className</property>
-				<property>properties</property>
-				<property>constructors</property>
-				<property>methods</property>
-				<property>interfaces</property>
-				<property>superClass</property>
-				<property>internClass</property>
-				<property>aggregationRelations</property>
-				<property>usageRelations</property>
-			</properties>
 			<constructors>
 				<constructor name="org.mql.java.models.ClassInfo"
 					visibility="public" />
@@ -78,44 +70,6 @@
 					visibility="public" />
 			</constructors>
 			<methods>
-				<method name="getAggregationRelations"
-					returnType="java.util.List" visibility="public" />
-				<method name="addInternClass" returnType="void"
-					visibility="public" />
-				<method name="getInternClass" returnType="java.util.List"
-					visibility="public" />
-				<method name="getUsageRelations" returnType="java.util.List"
-					visibility="public" />
-				<method name="addInterface" returnType="void"
-					visibility="public" />
-				<method name="setClassName" returnType="void"
-					visibility="public" />
-				<method name="addProperty" returnType="void"
-					visibility="public" />
-				<method name="addConstructor" returnType="void"
-					visibility="public" />
-				<method name="addUsageRelation" returnType="void"
-					visibility="public" />
-				<method name="setInterfaces" returnType="void"
-					visibility="public" />
-				<method name="setConstructors" returnType="void"
-					visibility="public" />
-				<method name="getSuperClass" returnType="java.lang.String"
-					visibility="public" />
-				<method name="setSuperClass" returnType="void"
-					visibility="public" />
-				<method name="setInternClass" returnType="void"
-					visibility="public" />
-				<method name="setUsageRelations" returnType="void"
-					visibility="public" />
-				<method name="addInterfaces" returnType="void"
-					visibility="public" />
-				<method name="setMethods" returnType="void"
-					visibility="public" />
-				<method name="setAggregationRelations" returnType="void"
-					visibility="public" />
-				<method name="addAggregationRelation" returnType="void"
-					visibility="public" />
 				<method name="toString" returnType="java.lang.String"
 					visibility="public" />
 				<method name="clone" returnType="java.lang.Object"
@@ -134,7 +88,46 @@
 					visibility="public" />
 				<method name="getClassName" returnType="java.lang.String"
 					visibility="public" />
+				<method name="display" returnType="void" visibility="public" />
 				<method name="addMethod" returnType="void"
+					visibility="public" />
+				<method name="getSuperClass" returnType="java.lang.String"
+					visibility="public" />
+				<method name="addProperty" returnType="void"
+					visibility="public" />
+				<method name="addConstructor" returnType="void"
+					visibility="public" />
+				<method name="setClassName" returnType="void"
+					visibility="public" />
+				<method name="setSuperClass" returnType="void"
+					visibility="public" />
+				<method name="setUsageRelations" returnType="void"
+					visibility="public" />
+				<method name="addUsageRelation" returnType="void"
+					visibility="public" />
+				<method name="setConstructors" returnType="void"
+					visibility="public" />
+				<method name="setInterfaces" returnType="void"
+					visibility="public" />
+				<method name="setInternClass" returnType="void"
+					visibility="public" />
+				<method name="getAggregationRelations"
+					returnType="java.util.List" visibility="public" />
+				<method name="getInternClass" returnType="java.util.List"
+					visibility="public" />
+				<method name="addInternClass" returnType="void"
+					visibility="public" />
+				<method name="getUsageRelations" returnType="java.util.List"
+					visibility="public" />
+				<method name="setMethods" returnType="void"
+					visibility="public" />
+				<method name="setAggregationRelations" returnType="void"
+					visibility="public" />
+				<method name="addAggregationRelation" returnType="void"
+					visibility="public" />
+				<method name="addInterface" returnType="void"
+					visibility="public" />
+				<method name="addInterfaces" returnType="void"
 					visibility="public" />
 			</methods>
 			<aggregationRelations>
@@ -147,25 +140,6 @@
 				<relation>List</relation>
 				<relation>List</relation>
 				<relation>List</relation>
-				<relation>List</relation>
-				<relation>String</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>Constructor</relation>
-				<relation>String</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>String</relation>
 				<relation>String</relation>
 				<relation>Object</relation>
 				<relation>ClassInfo</relation>
@@ -176,6 +150,25 @@
 				<relation>List</relation>
 				<relation>String</relation>
 				<relation>Method</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>Constructor</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>List</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>Constructor</relation>
@@ -185,59 +178,12 @@
 				<relation>Vector</relation>
 			</usageRelations>
 		</class>
-		<class name="Etudiant">
-			<properties>
-				<property>id</property>
-				<property>FirtName</property>
-				<property>LastName</property>
-			</properties>
-			<properties>
-				<property>id</property>
-				<property>FirtName</property>
-				<property>LastName</property>
-			</properties>
-			<constructors>
-				<constructor name="org.mql.java.models.Etudiant"
-					visibility="public" />
-				<constructor name="org.mql.java.models.Etudiant"
-					visibility="public" />
-			</constructors>
-			<methods>
-				<method name="getFirtName" returnType="java.lang.String"
-					visibility="public" />
-				<method name="setFirtName" returnType="void"
-					visibility="public" />
-				<method name="setLastName" returnType="void"
-					visibility="public" />
-				<method name="getLastName" returnType="java.lang.String"
-					visibility="public" />
-				<method name="setId" returnType="void" visibility="public" />
-				<method name="toString" returnType="java.lang.String"
-					visibility="public" />
-				<method name="getId" returnType="int" visibility="public" />
-			</methods>
-			<aggregationRelations>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
-			</aggregationRelations>
-			<usageRelations />
-		</class>
 		<class name="PackageInfo">
 			<properties>
 				<property>packageName</property>
 				<property>classes</property>
 				<property>subPackages</property>
 			</properties>
-			<properties>
-				<property>packageName</property>
-				<property>classes</property>
-				<property>subPackages</property>
-			</properties>
 			<constructors>
 				<constructor name="org.mql.java.models.PackageInfo"
 					visibility="public" />
@@ -245,43 +191,44 @@
 					visibility="public" />
 			</constructors>
 			<methods>
-				<method name="setPackageName" returnType="void"
-					visibility="public" />
-				<method name="getSubPackages" returnType="java.util.List"
-					visibility="public" />
-				<method name="setSubPackages" returnType="void"
-					visibility="public" />
-				<method name="addSubPackage" returnType="void"
-					visibility="public" />
-				<method name="addPackage" returnType="void"
-					visibility="public" />
-				<method name="setClasses" returnType="void"
+				<method name="clone" returnType="java.lang.Object"
 					visibility="public" />
 				<method name="clone"
 					returnType="org.mql.java.models.PackageInfo" visibility="public" />
-				<method name="clone" returnType="java.lang.Object"
-					visibility="public" />
 				<method name="getPackageName" returnType="java.lang.String"
 					visibility="public" />
 				<method name="getClasses" returnType="java.util.List"
 					visibility="public" />
 				<method name="addClass" returnType="void" visibility="public" />
+				<method name="display" returnType="void" visibility="public" />
+				<method name="getSubPackages" returnType="java.util.List"
+					visibility="public" />
+				<method name="addSubPackage" returnType="void"
+					visibility="public" />
+				<method name="setSubPackages" returnType="void"
+					visibility="public" />
+				<method name="setPackageName" returnType="void"
+					visibility="public" />
+				<method name="addPackage" returnType="void"
+					visibility="public" />
+				<method name="setClasses" returnType="void"
+					visibility="public" />
 			</methods>
 			<aggregationRelations>
 				<relation>String</relation>
 				<relation>List</relation>
 				<relation>List</relation>
-				<relation>String</relation>
-				<relation>List</relation>
-				<relation>List</relation>
-				<relation>PackageInfo</relation>
-				<relation>PackageInfo</relation>
-				<relation>List</relation>
-				<relation>PackageInfo</relation>
 				<relation>Object</relation>
+				<relation>PackageInfo</relation>
 				<relation>String</relation>
 				<relation>List</relation>
 				<relation>ClassInfo</relation>
+				<relation>List</relation>
+				<relation>PackageInfo</relation>
+				<relation>List</relation>
+				<relation>String</relation>
+				<relation>PackageInfo</relation>
+				<relation>List</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>ArrayList</relation>
@@ -294,11 +241,6 @@
 				<property>path</property>
 				<property>packages</property>
 			</properties>
-			<properties>
-				<property>projectName</property>
-				<property>path</property>
-				<property>packages</property>
-			</properties>
 			<constructors>
 				<constructor name="org.mql.java.models.ProjectInfo"
 					visibility="public" />
@@ -306,33 +248,34 @@
 					visibility="public" />
 			</constructors>
 			<methods>
+				<method name="getPackages" returnType="java.util.List"
+					visibility="public" />
+				<method name="getPath" returnType="java.lang.String"
+					visibility="public" />
+				<method name="display" returnType="void" visibility="public" />
 				<method name="setProjectName" returnType="void"
 					visibility="public" />
-				<method name="getProjectName" returnType="java.lang.String"
-					visibility="public" />
 				<method name="getAllClasses" returnType="java.util.Vector"
+					visibility="public" />
+				<method name="getProjectName" returnType="java.lang.String"
 					visibility="public" />
 				<method name="setPackages" returnType="void"
 					visibility="public" />
 				<method name="addPackage" returnType="void"
 					visibility="public" />
 				<method name="setPath" returnType="void" visibility="public" />
-				<method name="getPackages" returnType="java.util.List"
-					visibility="public" />
-				<method name="getPath" returnType="java.lang.String"
-					visibility="public" />
 			</methods>
 			<aggregationRelations>
 				<relation>String</relation>
 				<relation>String</relation>
 				<relation>Vector</relation>
+				<relation>List</relation>
 				<relation>String</relation>
 				<relation>String</relation>
 				<relation>Vector</relation>
+				<relation>String</relation>
 				<relation>Vector</relation>
 				<relation>PackageInfo</relation>
-				<relation>String</relation>
-				<relation>List</relation>
 				<relation>String</relation>
 			</aggregationRelations>
 			<usageRelations>
@@ -347,9 +290,6 @@
 			<properties>
 				<property>classInfo</property>
 			</properties>
-			<properties>
-				<property>classInfo</property>
-			</properties>
 			<constructors>
 				<constructor
 					name="org.mql.java.reflection.ClassExplorer" visibility="public" />
@@ -357,14 +297,6 @@
 					name="org.mql.java.reflection.ClassExplorer" visibility="public" />
 			</constructors>
 			<methods>
-				<method name="getClassInfo"
-					returnType="org.mql.java.models.ClassInfo" visibility="public" />
-				<method name="getInternClasses" returnType="java.util.List"
-					visibility="private" />
-				<method name="getSuperClass" returnType="java.lang.String"
-					visibility="private" />
-				<method name="getModifier" returnType="java.lang.String"
-					visibility="private" />
 				<method name="getInterfaces" returnType="java.util.List"
 					visibility="private" />
 				<method name="getMethods" returnType="java.util.List"
@@ -373,23 +305,31 @@
 					visibility="private" />
 				<method name="getProperties" returnType="java.util.List"
 					visibility="private" />
+				<method name="getModifier" returnType="java.lang.String"
+					visibility="private" />
+				<method name="getSuperClass" returnType="java.lang.String"
+					visibility="private" />
+				<method name="getInternClasses" returnType="java.util.List"
+					visibility="private" />
+				<method name="getClassInfo"
+					returnType="org.mql.java.models.ClassInfo" visibility="public" />
 			</methods>
 			<aggregationRelations>
 				<relation>ClassInfo</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>Class</relation>
+				<relation>List</relation>
+				<relation>Class</relation>
 				<relation>ClassInfo</relation>
-				<relation>List</relation>
-				<relation>Class</relation>
-				<relation>String</relation>
-				<relation>Class</relation>
-				<relation>String</relation>
-				<relation>List</relation>
-				<relation>Class</relation>
-				<relation>List</relation>
-				<relation>Class</relation>
-				<relation>List</relation>
-				<relation>Class</relation>
-				<relation>List</relation>
-				<relation>Class</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>Constructor</relation>
@@ -406,18 +346,14 @@
 				<property>myClassLoader</property>
 				<property>maClasse</property>
 			</properties>
-			<properties>
-				<property>myClassLoader</property>
-				<property>maClasse</property>
-			</properties>
 			<constructors>
 				<constructor
 					name="org.mql.java.reflection.MyClassLoader" visibility="public" />
 			</constructors>
 			<methods>
-				<method name="getMaClass" returnType="java.lang.Class"
-					visibility="public" />
 				<method name="closeClassLoader" returnType="void"
+					visibility="public" />
+				<method name="getMaClass" returnType="java.lang.Class"
 					visibility="public" />
 			</methods>
 			<aggregationRelations>
@@ -435,9 +371,6 @@
 			<properties>
 				<property>project</property>
 			</properties>
-			<properties>
-				<property>project</property>
-			</properties>
 			<constructors>
 				<constructor
 					name="org.mql.java.reflection.PackageExplorer" visibility="public" />
@@ -447,10 +380,10 @@
 					visibility="private" />
 				<method name="getProject"
 					returnType="org.mql.java.models.ProjectInfo" visibility="public" />
-				<method name="loadAndAddClassToPackage" returnType="void"
-					visibility="private" />
 				<method name="getRelativePackageName"
 					returnType="java.lang.String" visibility="private" />
+				<method name="loadAndAddClassToPackage" returnType="void"
+					visibility="private" />
 				<method name="addClassesToPackages" returnType="void"
 					visibility="private" />
 			</methods>
@@ -460,9 +393,9 @@
 				<relation>String</relation>
 				<relation>ProjectInfo</relation>
 				<relation>String</relation>
-				<relation>PackageInfo</relation>
-				<relation>String</relation>
 				<relation>File</relation>
+				<relation>String</relation>
+				<relation>PackageInfo</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>File</relation>
@@ -480,25 +413,21 @@
 				<property>packageNames</property>
 				<property>rootPath</property>
 			</properties>
-			<properties>
-				<property>packageNames</property>
-				<property>rootPath</property>
-			</properties>
 			<constructors>
 				<constructor
 					name="org.mql.java.reflection.ProjectExplorer" visibility="public" />
 			</constructors>
 			<methods>
-				<method name="getPackageNames" returnType="java.util.Set"
-					visibility="public" />
 				<method name="getPackage" returnType="void"
+					visibility="public" />
+				<method name="getPackageNames" returnType="java.util.Set"
 					visibility="public" />
 			</methods>
 			<aggregationRelations>
 				<relation>Set</relation>
 				<relation>String</relation>
-				<relation>Set</relation>
 				<relation>File</relation>
+				<relation>Set</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>File</relation>
@@ -508,26 +437,25 @@
 		</class>
 		<class name="RelationDetector">
 			<properties />
-			<properties />
 			<constructors>
 				<constructor
 					name="org.mql.java.reflection.RelationDetector" visibility="public" />
 			</constructors>
 			<methods>
-				<method name="getSourceFilePath"
-					returnType="java.lang.String" visibility="private" />
 				<method name="detectRelations" returnType="void"
 					visibility="public" />
 				<method name="detectUsageRelations" returnType="void"
 					visibility="public" />
+				<method name="getSourceFilePath"
+					returnType="java.lang.String" visibility="private" />
 			</methods>
 			<aggregationRelations>
-				<relation>String</relation>
-				<relation>String</relation>
-				<relation>String</relation>
 				<relation>ClassInfo</relation>
 				<relation>Class</relation>
 				<relation>ClassInfo</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>String</relation>
 				<relation>String</relation>
 				<relation>String</relation>
 			</aggregationRelations>
@@ -542,35 +470,103 @@
 			</usageRelations>
 		</class>
 	</package>
+	<package name="org.mql.java.ui">
+		<class name="UMLDiagram">
+			<properties>
+				<property>project</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.ui.UMLDiagram"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="main" returnType="void" visibility="public" />
+				<method name="lambda$0" returnType="void"
+					visibility="private" />
+				<method name="initializeUI" returnType="void"
+					visibility="private" />
+			</methods>
+			<aggregationRelations>
+				<relation>ProjectInfo</relation>
+				<relation>String[]</relation>
+				<relation>ProjectInfo</relation>
+				<relation>JFrame</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>*</relation>
+				<relation>ProjectInfo</relation>
+				<relation>PackageExplorer</relation>
+				<relation>*</relation>
+				<relation>List</relation>
+			</usageRelations>
+		</class>
+		<class name="UMLPanel">
+			<properties>
+				<property>project</property>
+				<property>classWidth</property>
+				<property>minHeight</property>
+				<property>padding</property>
+				<property>font</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.ui.UMLPanel"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="getPreferredSize"
+					returnType="java.awt.Dimension" visibility="public" />
+				<method name="drawClass" returnType="void"
+					visibility="private" />
+				<method name="paintComponent" returnType="void"
+					visibility="protected" />
+			</methods>
+			<aggregationRelations>
+				<relation>ProjectInfo</relation>
+				<relation>Font</relation>
+				<relation>Dimension</relation>
+				<relation>Graphics2D</relation>
+				<relation>ClassInfo</relation>
+				<relation>Graphics</relation>
+				<relation>JPanel</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>*</relation>
+				<relation>ClassInfo</relation>
+				<relation>ProjectInfo</relation>
+				<relation>*</relation>
+				<relation>Method</relation>
+				<relation>List</relation>
+			</usageRelations>
+		</class>
+	</package>
 	<package name="org.mql.java.xml">
 		<class name="XMIGenerator">
-			<properties />
 			<properties />
 			<constructors>
 				<constructor name="org.mql.java.xml.XMIGenerator"
 					visibility="public" />
 			</constructors>
 			<methods>
+				<method name="addAttributes" returnType="void"
+					visibility="private" />
 				<method name="generateXMI" returnType="void"
 					visibility="public" />
-				<method name="addNewLineElement" returnType="void"
-					visibility="private" />
 				<method name="addMethods" returnType="void"
 					visibility="private" />
-				<method name="addAttributes" returnType="void"
+				<method name="addNewLineElement" returnType="void"
 					visibility="private" />
 			</methods>
 			<aggregationRelations>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
 				<relation>ProjectInfo</relation>
 				<relation>String</relation>
 				<relation>Document</relation>
 				<relation>Element</relation>
-				<relation>Document</relation>
-				<relation>Element</relation>
 				<relation>List</relation>
 				<relation>Document</relation>
 				<relation>Element</relation>
-				<relation>List</relation>
 			</aggregationRelations>
 			<usageRelations>
 				<relation>ClassInfo</relation>
@@ -591,40 +587,12 @@
 		</class>
 		<class name="XMIParser">
 			<properties />
-			<properties />
 			<constructors>
 				<constructor name="org.mql.java.xml.XMIParser"
 					visibility="public" />
 			</constructors>
-			<methods>
-				<method name="printProjectInfo" returnType="void"
-					visibility="private" />
-				<method name="printPackageInfo" returnType="void"
-					visibility="private" />
-				<method name="printClassInfo" returnType="void"
-					visibility="private" />
-				<method name="parsePackage"
-					returnType="org.mql.java.models.PackageInfo" visibility="private" />
-				<method name="getMethodSignature"
-					returnType="java.lang.String" visibility="private" />
-				<method name="parseXMI"
-					returnType="org.mql.java.models.ProjectInfo" visibility="public" />
-				<method name="parseClass"
-					returnType="org.mql.java.models.ClassInfo" visibility="private" />
-			</methods>
-			<aggregationRelations>
-				<relation>ProjectInfo</relation>
-				<relation>PackageInfo</relation>
-				<relation>ClassInfo</relation>
-				<relation>PackageInfo</relation>
-				<relation>Element</relation>
-				<relation>String</relation>
-				<relation>Method</relation>
-				<relation>ProjectInfo</relation>
-				<relation>String</relation>
-				<relation>ClassInfo</relation>
-				<relation>Element</relation>
-			</aggregationRelations>
+			<methods />
+			<aggregationRelations />
 			<usageRelations>
 				<relation>ClassInfo</relation>
 				<relation>PackageInfo</relation>
@@ -640,36 +608,159 @@
 				<relation>List</relation>
 			</usageRelations>
 		</class>
-		<class name="XmlSerializer">
+		<class name="XMLLoader">
 			<properties />
+			<constructors>
+				<constructor name="org.mql.java.xml.XMLLoader"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="loadXMLFile"
+					returnType="org.mql.java.models.ProjectInfo" visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>ProjectInfo</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>ClassInfo</relation>
+				<relation>PackageInfo</relation>
+				<relation>ProjectInfo</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>Node</relation>
+				<relation>NodeList</relation>
+				<relation>DocumentBuilder</relation>
+				<relation>DocumentBuilderFactory</relation>
+				<relation>File</relation>
+			</usageRelations>
+		</class>
+		<class name="XMLNode">
+			<properties>
+				<property>node</property>
+				<property>children</property>
+			</properties>
+			<constructors>
+				<constructor name="org.mql.java.xml.XMLNode"
+					visibility="public" />
+				<constructor name="org.mql.java.xml.XMLNode"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="getValue" returnType="java.lang.String"
+					visibility="public" />
+				<method name="isNamed" returnType="boolean"
+					visibility="public" />
+				<method name="getNode" returnType="org.w3c.dom.Node"
+					visibility="public" />
+				<method name="getAttribute" returnType="java.lang.String"
+					visibility="public" />
+				<method name="setNode" returnType="void" visibility="public" />
+				<method name="getChild" returnType="org.mql.java.xml.XMLNode"
+					visibility="public" />
+				<method name="getChildren"
+					returnType="[Lorg.mql.java.xml.XMLNode;" visibility="public" />
+				<method name="extractChildren" returnType="void"
+					visibility="private" />
+				<method name="getIntAttribute" returnType="int"
+					visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>Node</relation>
+				<relation>XMLNode[]</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>Node</relation>
+				<relation>String</relation>
+				<relation>String</relation>
+				<relation>Node</relation>
+				<relation>XMLNode</relation>
+				<relation>String</relation>
+				<relation>XMLNode[]</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>DocumentBuilder</relation>
+				<relation>DocumentBuilderFactory</relation>
+				<relation>Document</relation>
+				<relation>Node</relation>
+				<relation>NodeList</relation>
+				<relation>LinkedList</relation>
+			</usageRelations>
+		</class>
+		<class name="XMLParser">
+			<properties />
+			<constructors>
+				<constructor name="org.mql.java.xml.XMLParser"
+					visibility="public" />
+			</constructors>
+			<methods>
+				<method name="parseElements" returnType="java.util.List"
+					visibility="private" />
+				<method name="parsePackage"
+					returnType="org.mql.java.models.PackageInfo" visibility="private" />
+				<method name="parseClass"
+					returnType="org.mql.java.models.ClassInfo" visibility="private" />
+				<method name="parseXml"
+					returnType="org.mql.java.models.ProjectInfo" visibility="public" />
+			</methods>
+			<aggregationRelations>
+				<relation>List</relation>
+				<relation>NodeList</relation>
+				<relation>PackageInfo</relation>
+				<relation>Element</relation>
+				<relation>ClassInfo</relation>
+				<relation>Element</relation>
+				<relation>ProjectInfo</relation>
+				<relation>String</relation>
+			</aggregationRelations>
+			<usageRelations>
+				<relation>File</relation>
+				<relation>ArrayList</relation>
+				<relation>List</relation>
+				<relation>DocumentBuilder</relation>
+				<relation>DocumentBuilderFactory</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>Node</relation>
+				<relation>NodeList</relation>
+				<relation>ClassInfo</relation>
+				<relation>PackageInfo</relation>
+				<relation>ProjectInfo</relation>
+			</usageRelations>
+		</class>
+		<class name="XmlSerializer">
 			<properties />
 			<constructors>
 				<constructor name="org.mql.java.xml.XmlSerializer"
 					visibility="public" />
 			</constructors>
 			<methods>
+				<method name="serializeAggregationRelations"
+					returnType="void" visibility="private" />
 				<method name="serializeToXml" returnType="void"
 					visibility="public" />
-				<method name="serializeMethods" returnType="void"
+				<method name="serializeClasses" returnType="void"
 					visibility="private" />
 				<method name="serializePackages" returnType="void"
 					visibility="private" />
-				<method name="serializeClasses" returnType="void"
+				<method name="serializeMethods" returnType="void"
 					visibility="private" />
-				<method name="serializeAggregationRelations"
-					returnType="void" visibility="private" />
 				<method name="serializeProperties" returnType="void"
-					visibility="private" />
-				<method name="getVisibilityModifier"
-					returnType="java.lang.String" visibility="private" />
-				<method name="serializeInternClasses" returnType="void"
 					visibility="private" />
 				<method name="serializeConstructors" returnType="void"
 					visibility="private" />
+				<method name="getVisibilityModifier"
+					returnType="java.lang.String" visibility="private" />
 				<method name="serializeUsageRelations" returnType="void"
+					visibility="private" />
+				<method name="serializeInternClasses" returnType="void"
 					visibility="private" />
 			</methods>
 			<aggregationRelations>
+				<relation>Document</relation>
+				<relation>Element</relation>
+				<relation>List</relation>
 				<relation>ProjectInfo</relation>
 				<relation>String</relation>
 				<relation>Document</relation>
@@ -688,9 +779,6 @@
 				<relation>Element</relation>
 				<relation>List</relation>
 				<relation>String</relation>
-				<relation>Document</relation>
-				<relation>Element</relation>
-				<relation>List</relation>
 				<relation>Document</relation>
 				<relation>Element</relation>
 				<relation>List</relation>
@@ -699,21 +787,21 @@
 				<relation>List</relation>
 			</aggregationRelations>
 			<usageRelations>
-				<relation>File</relation>
-				<relation>Constructor</relation>
-				<relation>Method</relation>
-				<relation>List</relation>
+				<relation>ClassInfo</relation>
+				<relation>PackageInfo</relation>
+				<relation>ProjectInfo</relation>
+				<relation>Document</relation>
+				<relation>Element</relation>
 				<relation>DocumentBuilder</relation>
 				<relation>DocumentBuilderFactory</relation>
 				<relation>Transformer</relation>
 				<relation>TransformerFactory</relation>
 				<relation>DOMSource</relation>
 				<relation>StreamResult</relation>
-				<relation>ClassInfo</relation>
-				<relation>PackageInfo</relation>
-				<relation>ProjectInfo</relation>
-				<relation>Document</relation>
-				<relation>Element</relation>
+				<relation>File</relation>
+				<relation>Constructor</relation>
+				<relation>Method</relation>
+				<relation>List</relation>
 			</usageRelations>
 		</class>
 	</package>
