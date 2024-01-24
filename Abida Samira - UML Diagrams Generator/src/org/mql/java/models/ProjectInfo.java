@@ -60,7 +60,7 @@ public class ProjectInfo {
     public void display() {
         System.out.println("Project: " + projectName);
         for (PackageInfo p : packages) {
-            p.display(1); // Indentation level for better readability
+            p.display(1);
         }
     }
 	

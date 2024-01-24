@@ -61,10 +61,10 @@ public class RelationDetector {
 		            String line;
 		            while ((line = reader.readLine()) != null) {
 		                if (line.startsWith("import ")) {
-		                    // Récupérer uniquement le nom de la classe depuis l'import
+		                    
 		                    String importedClass = line.substring("import ".length(), line.length() - 1).trim().replace(";", "");
 		                    
-		                    // Extraire le nom de la classe à partir du chemin complet
+		                  
 		                    int lastDotIndex = importedClass.lastIndexOf(".");
 		                    if (lastDotIndex != -1) {
 		                        importedClass = importedClass.substring(lastDotIndex + 1);

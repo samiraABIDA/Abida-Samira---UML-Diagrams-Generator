@@ -17,34 +17,34 @@ public class PackageExplorer {
 
 	public PackageExplorer(String projectPath) {
 		project = new ProjectInfo(new File(projectPath).getName());
-		File directory = new File(projectPath, "bin"); // Assuming the binary folder is always named "bin"
+		File directory = new File(projectPath, "bin");
 		project.setPath(directory.getPath());
 		System.out.println(directory.getPath());
 		explorePackages(directory, "");
-		// addClassesToPackages();
+
 	}
 
 	private void explorePackages(File directory, String parentPackage) {
-	    if (directory == null || !directory.exists()) {
-	        return;
-	    }
+		if (directory == null || !directory.exists()) {
+			return;
+		}
 
-	    PackageInfo packageInfo = new PackageInfo(parentPackage);
-	    boolean containsClasses = false;
+		PackageInfo packageInfo = new PackageInfo(parentPackage);
+		boolean containsClasses = false;
 
-	    for (File file : directory.listFiles()) {
-	        if (file.isDirectory()) {
-	            explorePackages(file, parentPackage.isEmpty() ? file.getName() : parentPackage + "." + file.getName());
-	        } else {
-	            containsClasses = true;
-	            packageInfo.addClass(new ClassExplorer(project.getPath(), parentPackage + "." + file.getName().replace(".class", "")).getClassInfo());
-	        }
-	    }
+		for (File file : directory.listFiles()) {
+			if (file.isDirectory()) {
+				explorePackages(file, parentPackage.isEmpty() ? file.getName() : parentPackage + "." + file.getName());
+			} else {
+				containsClasses = true;
+				packageInfo.addClass(new ClassExplorer(project.getPath(), parentPackage + "." + file.getName().replace(".class", "")).getClassInfo());
+			}
+		}
 
-	    // Ajouter le package à la liste uniquement s'il contient des classes directement
-	    if (containsClasses) {
-	        project.addPackage(packageInfo);
-	    }
+
+		if (containsClasses) {
+			project.addPackage(packageInfo);
+		}
 	}
 
 

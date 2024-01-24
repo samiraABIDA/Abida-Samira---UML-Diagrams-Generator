@@ -75,26 +75,26 @@ public class ClassInfo {
 	}
 
 	public void addMethod(Method method) {
-	    this.methods.add(method);
+		this.methods.add(method);
 	}
 
-    public void addMethodName(String methodName) {
-        methodNames.add(methodName);
-    }
+	public void addMethodName(String methodName) {
+		methodNames.add(methodName);
+	}
 
-    public void setMethodsNames(List<String> methodsNames) {
-        this.methodsNames = methodsNames;
-    }
-    
-    public List<String> getMethodNames() {
-        List<String> methodNames = new ArrayList<>();
-        for (Method method : methods) {
-            String methodName = method.getName();
-            int lastDotIndex = methodName.lastIndexOf('.');
-            methodNames.add((lastDotIndex != -1) ? methodName.substring(lastDotIndex + 1) : methodName);
-        }
-        return methodNames;
-    }
+	public void setMethodsNames(List<String> methodsNames) {
+		this.methodsNames = methodsNames;
+	}
+
+	public List<String> getMethodNames() {
+		List<String> methodNames = new ArrayList<>();
+		for (Method method : methods) {
+			String methodName = method.getName();
+			int lastDotIndex = methodName.lastIndexOf('.');
+			methodNames.add((lastDotIndex != -1) ? methodName.substring(lastDotIndex + 1) : methodName);
+		}
+		return methodNames;
+	}
 
 	public List<String> getInterfaces() {
 		return interfaces;
@@ -155,21 +155,21 @@ public class ClassInfo {
 
 
 	public void addInternClass(String internClass) {
-	    if (this.internClass == null) {
-	        this.internClass = new Vector<>();
-	    }
-	    this.internClass.add(internClass);
+		if (this.internClass == null) {
+			this.internClass = new Vector<>();
+		}
+		this.internClass.add(internClass);
 	}
 
 	public void addInterfaces(List<String> interfaces) {
-	    if (this.interfaces == null) {
-	        this.interfaces = new Vector<>();
-	    }
-	    this.interfaces.addAll(interfaces);
+		if (this.interfaces == null) {
+			this.interfaces = new Vector<>();
+		}
+		this.interfaces.addAll(interfaces);
 	}
 
 	public void addInterface(String interfaceName) {
-	    this.interfaces.add(interfaceName);
+		this.interfaces.add(interfaceName);
 	}
 
 
@@ -187,36 +187,35 @@ public class ClassInfo {
 		clonedClass.setUsageRelations(new Vector<>(this.usageRelations));
 		return clonedClass;
 	}
-	
+
 	public void display(int indentationLevel) {
-        String indentation = "  ".repeat(indentationLevel); // Ajouter l'indentation
-        System.out.println(indentation + "Class: " + className);
-        
-        // Afficher les propriétés
-        System.out.println(indentation + "  Properties: " + properties);
-
-        // Afficher les constructeurs
-        System.out.println(indentation + "  Constructors:");
-        for (Constructor<?> constructor : constructors) {
-            System.out.println(indentation + "    " + constructor);
-        }
-
-        // Afficher les méthodes
-        System.out.println(indentation + "  Methods:");
-        for (Method method : methods) {
-            System.out.println(indentation + "    " + method);
-        }
-
-        // Afficher les relations d'agrégation
-        System.out.println(indentation + "  Aggregation Relations: " + aggregationRelations);
-
-        // Afficher les relations d'utilisation
-        System.out.println(indentation + "  Usage Relations: " + usageRelations);
-
-        // Afficher les classes internes
-        System.out.println(indentation + "  Inner Classes: " + internClass);
+		String indentation = "  ".repeat(indentationLevel); 
+		System.out.println(indentation + "Class: " + className);
 
 
-    }
+		System.out.println(indentation + "  Properties: " + properties);
+
+
+		System.out.println(indentation + "  Constructors:");
+		for (Constructor<?> constructor : constructors) {
+			System.out.println(indentation + "    " + constructor);
+		}
+
+
+		System.out.println(indentation + "  Methods:");
+		for (Method method : methods) {
+			System.out.println(indentation + "    " + method);
+		}
+
+		System.out.println(indentation + "  Aggregation Relations: " + aggregationRelations);
+
+
+		System.out.println(indentation + "  Usage Relations: " + usageRelations);
+
+
+		System.out.println(indentation + "  Inner Classes: " + internClass);
+
+
+	}
 }
 
