@@ -48,9 +48,6 @@ public class PackageExplorer {
 	}
 
 
-
-
-
 	private String getRelativePackageName(File directory) {
 		String packagePath = directory.getAbsolutePath();
 		String basePath = new File(project.getProjectName()).getAbsolutePath();

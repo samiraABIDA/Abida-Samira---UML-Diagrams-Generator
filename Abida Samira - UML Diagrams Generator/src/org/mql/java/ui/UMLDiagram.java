@@ -30,13 +30,5 @@ public class UMLDiagram extends JFrame {
         setVisible(true);
     }
 
-
-    public static void main(String[] args) {
-      
-       String projectPath = "C:\\Users\\asus\\git\\repository7\\Abida Samira - UML Diagrams Generator";
-       PackageExplorer packageExplorer = new PackageExplorer(projectPath);
-       ProjectInfo project = packageExplorer.getProject();
-
-       SwingUtilities.invokeLater(() -> new UMLDiagram(project));
-    }
+ 
 }

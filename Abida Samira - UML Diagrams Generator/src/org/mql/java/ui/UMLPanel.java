@@ -65,7 +65,7 @@ public class UMLPanel extends JPanel {
 		int lineY2 = attributeY + padding;
 		g2d.drawLine(x, lineY2, x + classWidth, lineY2);
 
-		// Dessiner les méthodes en bas
+	
 		List<Method> methods = classInfo.getMethods();
 		int methodY = lineY2 + padding; 
 		for (Method method : methods) {

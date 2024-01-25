@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.SwingUtilities;
+
 import org.mql.java.models.ClassInfo;
 import org.mql.java.models.PackageInfo;
 import org.mql.java.models.ProjectInfo;
 import org.mql.java.reflection.PackageExplorer;
+import org.mql.java.ui.UMLDiagram;
 import org.mql.java.xml.XMIGenerator;
 import org.mql.java.xml.XMIParser;
 import org.mql.java.xml.XMLParser;
@@ -18,7 +21,7 @@ import org.mql.java.xml.XmlSerializer;
 public class Examples {
 
 	public Examples() {
-		exp03();
+		exp05();
 	}
 
 	void exp01() {
@@ -87,7 +90,17 @@ public class Examples {
 		System.out.println("Fichier XMI généré avec succès à l'emplacement : " + xmiFilePath);
 	}
 
+	void exp05() {
 
+			      
+		       String projectPath = "C:\\Users\\asus\\git\\repository7\\Abida Samira - UML Diagrams Generator";
+		       PackageExplorer packageExplorer = new PackageExplorer(projectPath);
+		       ProjectInfo project = packageExplorer.getProject();
+
+		       SwingUtilities.invokeLater(() -> new UMLDiagram(project));
+		  
+
+	}
 
 	private static void displayProjectInfo(ProjectInfo projectInfo) {
 		System.out.println("Project Name: " + projectInfo.getProjectName());
